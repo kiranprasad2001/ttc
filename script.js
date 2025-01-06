@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const rows = csvData.split('\n');
       const headers = rows[0].split(',');
 
-      // Group stops by the "Going Towards" column
+      // Group stops by the "Direction" column
       const groupedStops = {};
 
       // Function to create and add a grid item
@@ -21,14 +21,14 @@ document.addEventListener('DOMContentLoaded', () => {
         gridItem.innerHTML = `
           <h3>${stopData['Stop Name']}</h3>
           <p>${stopData['Intersection']}</p>
-          <p>Going ${stopData['Going Towards']}</p>
+          <p>Going ${stopData['Direction']}</p>
           <p>Check timings</p>
         `;
 
         return gridItem;
       }
 
-      // Populate groupedStops with stops categorized by "Going Towards"
+      // Populate groupedStops with stops categorized by "Direction"
       for (let i = 1; i < rows.length; i++) {
         const data = rows[i].split(',');
         if (data.length === headers.length) {
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
             stopData[headers[j]] = data[j];
           }
 
-          const category = stopData['Going Towards'].trim();
+          const category = stopData['Direction'].trim();
           if (!groupedStops[category]) {
             groupedStops[category] = [];
           }
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Create the category title
         const categoryTitle = document.createElement('h2');
-        categoryTitle.textContent = `Going Towards ${category}`; // Title for the category
+        categoryTitle.textContent = `Direction ${category}`; // Title for the category
         categoryContainer.appendChild(categoryTitle);
 
         // Create the grid for the category
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				categoryContainer.classList.add('category-container');
 		
 				const categoryTitle = document.createElement('h2');
-				categoryTitle.textContent = `Going Towards ${category}`;
+				categoryTitle.textContent = `Direction ${category}`;
 				categoryContainer.appendChild(categoryTitle);
 			
 				const grid = document.createElement('div');

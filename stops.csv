@@ -1,5 +1,5 @@
-Stop ID,Stop Name,Intersection,Going Towards
-10892,Richmond St West at Yonge St West,Yonge and Richmond,Towards West
-3069,Queen St East at Sackville St, Sackville and Queen, Towards West
-4141,King St East at Parliament St, Parliament and King, Towards West
-12314,Church St at Queen St East, Church and Queen, Towards East
+Stop ID,Stop Name,Intersection,Direction
+10892,Richmond St West at Yonge St West,Yonge and Richmond,Westbound
+3069,Queen St East at Sackville St, Sackville and Queen, Westbound
+4141,King St East at Parliament St, Parliament and King, Westbound
+12314,Church St at Queen St East, Church and Queen, Eastbound
