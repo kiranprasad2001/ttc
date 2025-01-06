@@ -4,8 +4,8 @@ body {
   margin: 0;
   transition: background-color 0.3s ease, color 0.3s ease;
   display: flex;
-  min-height: 100vh; /* Ensure the body takes at least the full viewport height */
-  flex-direction: column; /* Arrange content vertically */
+  min-height: 100vh; 
+  flex-direction: column; 
 }
 
 .content-wrapper { /* New class to wrap the main content */
@@ -117,10 +117,9 @@ nav a {
 
 /* footer */
 footer {
-  background-color: #f0f0f0; /* Light gray background for the footer */
+  background-color: #f0f0f0; 
   padding: 10px 20px;
   border-top: 1px solid #ccc;
-  margin-top: auto; /* Push footer to the bottom */ 
 }
 
 .footer-content {
