@@ -1,29 +1,25 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>TTC message Sender</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-      /* Add CSS for styling and layout if needed */
-      .header-container {
-        display: flex;
-        justify-content: space-between;
-        /* Distribute items evenly */
-        align-items: center;
-        /* Vertically align items */
-        padding: 10px;
-        /* Add some padding */
-      }
+<head>
+  <title>TTC message Sender</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Add CSS for styling and layout if needed */
+    .header-container {
+      display: flex;
+      justify-content: space-between; /* Distribute items evenly */
+      align-items: center; /* Vertically align items */
+      padding: 10px; /* Add some padding */
+    }
 
-      .center-search {
-        flex-grow: 1;
-        /* Allow search to take up available space */
-        text-align: center;
-        /* Center the search within its area */
-      }
-    </style>
-  </head>
-  <body>
+    .center-search {
+      flex-grow: 1; /* Allow search to take up available space */
+      text-align: center; /* Center the search within its area */
+    }
+  </style>
+</head>
+<body>
+  <div class="content-wrapper">  </div> 
     <div class="header-container">
       <div>
         <a href="index.html" class="logo-link">
@@ -39,17 +35,18 @@
       </div>
     </div>
     <div class="container" id="grid-container"></div>
-    <footer>
-      <div class="footer-content">
-        <div class="left">
-          &copy; KP (<a href="https://links.spotrot.com">links.spotrot.com</a>)
-        </div>
-        <div class="center">Not an official app. Official website: <a href="https://ttc.ca">ttc.ca</a>
-        </div>
-        <div class="right">Official news: <a href="https://ttc.ca/news">ttc.ca/news</a>
-        </div>
+  
+  <footer>
+    <div class="footer-content">
+      <div class="left">
+        &copy; KP (<a href="https://links.spotrot.com">links.spotrot.com</a>)
       </div>
-    </footer>
-    <script src="script.js"></script>
-  </body>
+      <div class="center">Not an official app. Official website: <a href="https://ttc.ca">ttc.ca</a>
+      </div>
+      <div class="right">Official news: <a href="https://ttc.ca/news">ttc.ca/news</a>
+      </div>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
 </html>
