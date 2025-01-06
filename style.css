@@ -4,8 +4,12 @@ body {
   margin: 0;
   transition: background-color 0.3s ease, color 0.3s ease;
   display: flex;
-  min-height: 100vh;
-  flex-direction: column;
+  min-height: 100vh; 
+  flex-direction: column; 
+}
+
+.content-wrapper { /* New class to wrap the main content */
+  flex: 1; /* Allow the content to grow and push the footer down */
 }
 
 header {
@@ -113,7 +117,7 @@ nav a {
 
 /* footer */
 footer {
-  background-color: #f0f0f0;
+  background-color: #f0f0f0; 
   padding: 10px 20px;
   border-top: 1px solid #ccc;
 }
@@ -135,8 +139,4 @@ footer {
 
 .right {
   text-align: right; /* Align news link to the right */
-}
-
-main { /* Added styles for <main> */
-  flex: 1; /* Allow main content to take up available space */
 }
