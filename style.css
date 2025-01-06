@@ -24,7 +24,7 @@ header {
   font-family: sans-serif;
   font-weight: bold;
   font-size: 20px;
-  margin-right: 20px; /* Add some space between logo and nav */
+  margin-right: auto; /* Push logo to the left */
 }
 
 .logo-link { /* Style for the logo link */
@@ -37,10 +37,11 @@ nav ul {
   margin: 0;
   padding: 0;
   display: flex;
+  margin-left: 20px; /* Add spacing between nav and search */ 
 }
 
 nav li {
-  margin-right: 20px; /* Add spacing between nav items */
+  margin-left: 20px; /* Add spacing between nav items */
 }
 
 nav a {
