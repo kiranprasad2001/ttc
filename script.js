@@ -64,9 +64,10 @@ document.addEventListener('DOMContentLoaded', () => {  // Ensure the DOM is full
       Object.keys(groupedStops).forEach(category => {
         const categoryContainer = document.createElement('div');
         categoryContainer.classList.add('category-container');
-
+        
+        // Move the category title above the grid
         const categoryTitle = document.createElement('h2');
-        categoryTitle.textContent = category;
+        categoryTitle.textContent = `Towards ${category}`; // Place the title before the grid
         categoryContainer.appendChild(categoryTitle);
 
         const grid = document.createElement('div');
@@ -76,6 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {  // Ensure the DOM is full
 
         gridContainer.appendChild(categoryContainer);
       });
+
 
       // Search functionality
       searchBox.addEventListener('input', () => {
