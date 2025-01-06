@@ -38,6 +38,25 @@ fetch('stops.csv')
       });
     }
 
+    // Function to add event listeners to all grid items
+    function addEventListenersToGridItems() {
+      const gridItems = document.querySelectorAll('.grid-item');
+      gridItems.forEach(item => {
+        item.addEventListener('click', () => {
+          const recipient = item.dataset.recipient;
+          const body = item.dataset.body;
+
+          try {
+            const smsUrl = `sms:${recipient}?body=${encodeURIComponent(body)}`;
+            window.open(smsUrl, '_blank');
+          } catch (error) {
+            console.error("Error opening SMS app:", error);
+            alert("Oops! There was an error opening the messaging app.");
+          }
+        });
+      });
+    }
+
     // Initial population of the grid
     for (let i = 1; i < rows.length; i++) {
       const data = rows[i].split(',');
@@ -49,6 +68,7 @@ fetch('stops.csv')
         addGridItem(stopData);
       }
     }
+    addEventListenersToGridItems(); // Add event listeners to initially created grid items
 
     // Search functionality
     searchBox.addEventListener('input', () => {
@@ -69,6 +89,7 @@ fetch('stops.csv')
           }
         }
       }
+      addEventListenersToGridItems(); // Add event listeners to newly created grid items
     });
 
   })
