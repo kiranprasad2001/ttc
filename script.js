@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   const searchBox = document.getElementById('search-box');
-  const gridContainer = document.getElementById('grid-container'); // Get the main grid container
+  const gridContainer = document.getElementById('grid-container');
 
   fetch('stops.csv')
     .then(response => response.text())
@@ -9,11 +9,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const rows = csvData.split('\n');
       const headers = rows[0].split(',');
 
-      // Get unique directions from the CSV data
-      const directions = [...new Set(rows.slice(1).map(row => row.split(',')[3]))]; 
-
-      // Create grid containers dynamically based on directions
+      const directions = [...new Set(rows.slice(1).map(row => row.split(',')[3]))];
       const gridContainers = {};
+
       directions.forEach(direction => {
         const container = document.createElement('div');
         container.classList.add('container');
@@ -58,11 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
             alert("Oops! There was an error opening the messaging app.");
           }
         });
-		
-		const direction = stopData['Going Towards'];
-        if (gridContainers[direction]) {
-          gridContainers[direction].appendChild(gridItem);
-        }
       }
 
       for (let i = 1; i < rows.length; i++) {
@@ -78,7 +71,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
       searchBox.addEventListener('input', () => {
         const searchTerm = searchBox.value.toLowerCase();
-        gridContainer.innerHTML = '';
+
+        // Clear all grid containers
+        for (const direction in gridContainers) {
+          gridContainers[direction].innerHTML = '';
+        }
 
         for (let i = 1; i < rows.length; i++) {
           const data = rows[i].split(',');
