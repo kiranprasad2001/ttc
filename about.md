@@ -1,4 +1,4 @@
-# About Spotrot.TTC
+I have this [domain](https://spotrot.com) sitting idle without doing much after I closed my startup midway. Utilizing this for my personal projects now.
 
 Spotrot.TTC is a simple web app designed to help riders of the Toronto Transit Commission (TTC) quickly access information and send messages related to specific stops. 
 
