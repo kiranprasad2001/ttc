@@ -5,11 +5,6 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.search-container {
-  text-align: center;
-  margin: 20px;
-}
-
 #search-box {
   width: 80%;
   max-width: 500px;
@@ -69,36 +64,34 @@ body {
 }
 
 header {
-  background-color: #f0f0f0; /* Light gray background for the header */
+  background-color: #f0f0f0;
   padding: 10px 20px;
   border-bottom: 1px solid #ccc;
+  display: flex; /* Make the header a flex container */
+  justify-content: space-between; /* Distribute space between logo, nav, and search */
+  align-items: center; /* Vertically align items */
 }
 
 .header-content {
-  display: flex;
-  justify-content: space-between; /* Align logo to the left and nav to the right */
-  align-items: center; /* Vertically center the content */
+  display: flex; /* Make the content a flex container */
+  align-items: center; /* Vertically align items */
 }
 
 .logo {
   font-family: sans-serif;
   font-weight: bold;
-  font-size: 20px; /* Adjust font size as needed */
+  font-size: 20px;
+  margin-right: 20px; /* Add some space between logo and nav */
 }
 
 nav ul {
   list-style: none;
   margin: 0;
   padding: 0;
-  display: flex; /* Align nav items horizontally */
+  display: flex;
+  margin-right: 20px; /* Add some space between nav and search */
 }
 
-nav li {
-  margin-left: 20px;
-}
-
-nav a {
-  text-decoration: none;
-  color: #333;
-  font-family: sans-serif;
+.search-container {
+  /* Removed margin and text-align styles */
 }
