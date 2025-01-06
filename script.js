@@ -1,26 +1,24 @@
 const gridContainer = document.getElementById('grid-container');
 
-fetch('stops.csv')  // Fetch the CSV file
+fetch('stops.csv')
   .then(response => response.text())
   .then(csvData => {
-    const rows = csvData.split('\n'); // Split into rows
-    const headers = rows[0].split(','); // Get the headers
+    const rows = csvData.split('\n');
+    const headers = rows[0].split(',');
 
-    for (let i = 1; i < rows.length; i++) { // Start from the second row (data)
+    for (let i = 1; i < rows.length; i++) {
       const data = rows[i].split(',');
-      if (data.length === headers.length) { // Make sure the row has all the data
+      if (data.length === headers.length) {
         const stopData = {};
         for (let j = 0; j < headers.length; j++) {
           stopData[headers[j]] = data[j];
         }
 
-        // Create a grid item element
         const gridItem = document.createElement('div');
         gridItem.classList.add('grid-item');
-        gridItem.dataset.recipient = '89882'; // Set the recipient (you might want to make this dynamic)
-        gridItem.dataset.body = stopData['Stop ID']; // Set the message body (Stop ID)
+        gridItem.dataset.recipient = '89882'; 
+        gridItem.dataset.body = stopData['Stop ID'];
 
-        // Add content to the grid item
         gridItem.innerHTML = `
           <h3>${stopData['Stop Name']}</h3>
           <p>${stopData['Intersection']}</p>
@@ -28,16 +26,30 @@ fetch('stops.csv')  // Fetch the CSV file
           <p>Check timings</p>
         `;
 
-        // Add the grid item to the container
         gridContainer.appendChild(gridItem);
       }
     }
 
-    // Add event listeners to the newly created grid items (same as before)
-    // ... (rest of your event listener code from the previous example)
+    // Add event listeners to the grid items
+    const gridItems = document.querySelectorAll('.grid-item');
+
+    gridItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const recipient = item.dataset.recipient;
+        const body = item.dataset.body;
+
+        try {
+          const smsUrl = `sms:${recipient}?body=${encodeURIComponent(body)}`;
+          window.open(smsUrl, '_blank');
+        } catch (error) {
+          console.error("Error opening SMS app:", error);
+          alert("Oops! There was an error opening the messaging app.");
+        }
+      });
+    });
+
   })
   .catch(error => {
     console.error("Error loading stop data:", error);
     // Handle the error (e.g., display an error message on the page)
   });
-
