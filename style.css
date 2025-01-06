@@ -107,3 +107,30 @@ nav a {
     width: 95%;
   }
 }
+
+/* footer */
+footer {
+  background-color: #f0f0f0; /* Light gray background for the footer */
+  padding: 10px 20px;
+  border-top: 1px solid #ccc;
+  margin-top: 20px; /* Add some space above the footer */
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between; /* Align items to left, center, and right */
+  align-items: center; /* Vertically center the content */
+}
+
+.left, .center, .right {
+  flex: 1; /* Allow each section to take up equal space */
+  text-align: center; /* Center text within each section */
+}
+
+.left {
+  text-align: left; /* Align copyright to the left */
+}
+
+.right {
+  text-align: right; /* Align news link to the right */
+}
