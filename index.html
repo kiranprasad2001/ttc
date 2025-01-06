@@ -1,23 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>TTC message Sender</title>
+  <title>TTC Message Sender</title>
   <link rel="stylesheet" href="style.css">
   <meta name="google-site-verification" content="iDxk7n__yLKWWkm3J4QZelGbn42cUaP04319UvqVUEQ" />
-  <style>
-    /* Add CSS for styling and layout if needed */
-    .header-container {
-      display: flex;
-      justify-content: space-between; /* Distribute items evenly */
-      align-items: center; /* Vertically align items */
-      padding: 10px; /* Add some padding */
-    }
-
-    .center-search {
-      flex-grow: 1; /* Allow search to take up available space */
-      text-align: center; /* Center the search within its area */
-    }
-  </style>
 </head>
 <body>
   <header>
@@ -30,25 +16,27 @@
       <div class="center-search">
         <input type="text" id="search-box" placeholder="Search routes...">
       </div>
-      <div>
-        <a href="https://forms.gle/your-google-form-link" target="_blank">Submit a Stop</a> |
+      <div class="header-links">
+        <a href="https://forms.gle/your-google-form-link" target="_blank">Submit a Stop</a>
         <a href="about.md">About</a>
       </div>
     </div>
   </header>
 
-  <main> </main> 
+  <main class="content-wrapper">
     <div class="container" id="grid-container"></div>
-  
+  </main>
 
   <footer>
     <div class="footer-content">
       <div class="left">
         &copy; KP (<a href="https://links.spotrot.com">links.spotrot.com</a>)
       </div>
-      <div class="center">Not an official app. Official website: <a href="https://ttc.ca">ttc.ca</a>
+      <div class="center">
+        Not an official app. Official website: <a href="https://ttc.ca">ttc.ca</a>
       </div>
-      <div class="right">Official news: <a href="https://ttc.ca/news">ttc.ca/news</a>
+      <div class="right">
+        Official news: <a href="https://ttc.ca/news">ttc.ca/news</a>
       </div>
     </div>
   </footer>
