@@ -97,3 +97,16 @@ fetch('stops.csv')
     console.error("Error loading stop data:", error);
     // Handle the error (e.g., display an error message on the page)
   });
+
+// Dark/light mode based on time of day
+function setTheme() {
+  const now = new Date();
+  const hour = now.getHours();
+  if (hour >= 18 || hour < 6) { // After 6 PM or before 6 AM
+    document.body.classList.add('dark-mode');
+  } else {
+    document.body.classList.remove('dark-mode');
+  }
+}
+
+setTheme(); // Set the initial theme on page load
