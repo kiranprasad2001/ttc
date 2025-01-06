@@ -11,7 +11,7 @@ fetch('stops.csv')
     function addGridItem(stopData) {
       const gridItem = document.createElement('div');
       gridItem.classList.add('grid-item');
-      gridItem.dataset.recipient = '898882';
+      gridItem.dataset.recipient = '89882';
       gridItem.dataset.body = stopData['Stop ID'];
 
       gridItem.innerHTML = `
@@ -25,8 +25,8 @@ fetch('stops.csv')
 
       // Add event listener to the grid item
       gridItem.addEventListener('click', () => {
-        const recipient = item.dataset.recipient;
-        const body = item.dataset.body;
+        const recipient = gridItem.dataset.recipient; // Changed 'item' to 'gridItem'
+        const body = gridItem.dataset.body; // Changed 'item' to 'gridItem'
 
         try {
           const smsUrl = `sms:${recipient}?body=${encodeURIComponent(body)}`;
@@ -102,7 +102,7 @@ fetch('stops.csv')
 function setTheme() {
   const now = new Date();
   const hour = now.getHours();
-  if (hour >= 18 || hour < 6) { // After 6 PM or before 6 AM
+  if (hour >= 18 || hour < 6) {
     document.body.classList.add('dark-mode');
   } else {
     document.body.classList.remove('dark-mode');
