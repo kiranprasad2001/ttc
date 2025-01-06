@@ -40,7 +40,9 @@ document.addEventListener('DOMContentLoaded', () => {  // Ensure the DOM is full
         });
       }
 
-      // Initial population of the grid
+      // Group stops by "Going Towards"
+      const groupedStops = {};
+
       for (let i = 1; i < rows.length; i++) {
         const data = rows[i].split(',');
         if (data.length === headers.length) {
@@ -48,36 +50,64 @@ document.addEventListener('DOMContentLoaded', () => {  // Ensure the DOM is full
           for (let j = 0; j < headers.length; j++) {
             stopData[headers[j]] = data[j];
           }
-          addGridItem(stopData);
+
+          // Group by 'Going Towards' category
+          const category = stopData['Going Towards'].trim();
+          if (!groupedStops[category]) {
+            groupedStops[category] = [];
+          }
+          groupedStops[category].push(stopData);
         }
       }
-      // addEventListenersToGridItems();  // No need to call this here
+
+      // Render grouped stops
+      Object.keys(groupedStops).forEach(category => {
+        const categoryContainer = document.createElement('div');
+        categoryContainer.classList.add('category-container');
+
+        const categoryTitle = document.createElement('h2');
+        categoryTitle.textContent = category;
+        categoryContainer.appendChild(categoryTitle);
+
+        const grid = document.createElement('div');
+        grid.classList.add('grid');
+        groupedStops[category].forEach(stopData => addGridItem(stopData));
+        categoryContainer.appendChild(grid);
+
+        gridContainer.appendChild(categoryContainer);
+      });
 
       // Search functionality
       searchBox.addEventListener('input', () => {
         const searchTerm = searchBox.value.toLowerCase();
         gridContainer.innerHTML = ''; // Clear the grid
 
-        for (let i = 1; i < rows.length; i++) {
-          const data = rows[i].split(',');
-          if (data.length === headers.length) {
-            const stopData = {};
-            for (let j = 0; j < headers.length; j++) {
-              stopData[headers[j]] = data[j];
-            }
+        // Filter and render based on search term
+        Object.keys(groupedStops).forEach(category => {
+          const categoryContainer = document.createElement('div');
+          categoryContainer.classList.add('category-container');
 
+          const categoryTitle = document.createElement('h2');
+          categoryTitle.textContent = category;
+          categoryContainer.appendChild(categoryTitle);
+
+          const grid = document.createElement('div');
+          grid.classList.add('grid');
+          
+          groupedStops[category].forEach(stopData => {
             if (Object.values(stopData).some(value => value.toLowerCase().includes(searchTerm))) {
               addGridItem(stopData);
             }
-          }
-        }
-        // addEventListenersToGridItems(); // No need to call this here
+          });
+
+          categoryContainer.appendChild(grid);
+          gridContainer.appendChild(categoryContainer);
+        });
       });
 
     })
     .catch(error => {
       console.error("Error loading stop data:", error);
-      // Handle the error (e.g., display an error message on the page)
     });
 
   // Dark/light mode based on time of day
