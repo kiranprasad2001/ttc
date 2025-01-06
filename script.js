@@ -1,17 +1,32 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const gridContainers = {
-    'Towards West': document.getElementById('grid-container-west'),
-    'Towards East': document.getElementById('grid-container-east'),
-    'Towards North': document.getElementById('grid-container-north'),
-    'Towards South': document.getElementById('grid-container-south')
-  };
+
   const searchBox = document.getElementById('search-box');
+  const gridContainer = document.getElementById('grid-container'); // Get the main grid container
 
   fetch('stops.csv')
     .then(response => response.text())
     .then(csvData => {
       const rows = csvData.split('\n');
       const headers = rows[0].split(',');
+
+      // Get unique directions from the CSV data
+      const directions = [...new Set(rows.slice(1).map(row => row.split(',')[3]))]; 
+
+      // Create grid containers dynamically based on directions
+      const gridContainers = {};
+      directions.forEach(direction => {
+        const container = document.createElement('div');
+        container.classList.add('container');
+        container.id = `grid-container-${direction.toLowerCase().replace(/\s+/g, '-')}`;
+
+        const heading = document.createElement('h2');
+        heading.textContent = `Going ${direction}`;
+
+        gridContainer.appendChild(heading);
+        gridContainer.appendChild(container);
+
+        gridContainers[direction] = container;
+      });
 
       function addGridItem(stopData) {
         const gridItem = document.createElement('div');
@@ -43,6 +58,11 @@ document.addEventListener('DOMContentLoaded', () => {
             alert("Oops! There was an error opening the messaging app.");
           }
         });
+		
+		const direction = stopData['Going Towards'];
+        if (gridContainers[direction]) {
+          gridContainers[direction].appendChild(gridItem);
+        }
       }
 
       for (let i = 1; i < rows.length; i++) {
