@@ -2,7 +2,7 @@
 body {
   font-family: sans-serif;
   margin: 0;
-  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for dark/light mode */
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .search-container {
@@ -32,13 +32,13 @@ body {
   padding: 20px;
   text-align: center;
   cursor: pointer;
-  border-radius: 10px; /* Add rounded corners to grid items */
-  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+  border-radius: 10px;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
 }
 
 .grid-item:hover {
-  transform: translateY(-5px); /* Slight lift on hover */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow on hover */
+  transform: translateY(-5px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 /* Dark mode styles */
