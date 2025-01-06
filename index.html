@@ -1,59 +1,59 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>TTC Message Sender</title>
-  <link rel="stylesheet" href="style.css">
-  <meta name="google-site-verification" content="iDxk7n__yLKWWkm3J4QZelGbn42cUaP04319UvqVUEQ" />
-  <meta name="description" content="Get real-time updates on TTC stops. Send a quick message to find out arrival times.">
-  <meta name="description" content="Learn more about the TTC Message Sender web app, its features, and how it can help you stay informed about TTC stops.">
-  <meta name="author" content="Kiran Prasad"> 
-  <meta name="keywords" content="TTC, Toronto Transit Commission, transit, bus, streetcar, subway, stops, real-time, updates, TXTTTC, TTC message, TTC message send, TTC, Toronto Transit, Toronto">
-  <meta name="robots" content="index, follow">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
-  <meta name="theme-color" content="#ffffff"> 
-  <meta name="apple-mobile-web-app-capable" content="yes"> 
-  <meta name="apple-mobile-web-app-status-bar-style" content="black"> 
-</head>
-<body>
-  <header>
-    <div class="header-container">
-      <div>
-        <a href="index.html" class="logo-link">
-          <div class="logo">Spotrot.TTC</div>
-        </a>
+  <head>
+    <title>TTC Message Sender</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="google-site-verification" content="iDxk7n__yLKWWkm3J4QZelGbn42cUaP04319UvqVUEQ"/>
+    <meta name="description" content="Get real-time updates on TTC stops. Send a quick message to find out arrival times.">
+    <meta name="description" content="Learn more about the TTC Message Sender web app, its features, and how it can help you stay informed about TTC stops.">
+    <meta name="author" content="Kiran Prasad">
+    <meta name="keywords" content="TTC, Toronto Transit Commission, transit, bus, streetcar, subway, stops, real-time, updates, TXTTTC, TTC message, TTC message send, TTC, Toronto Transit, Toronto">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  </head>
+  <body>
+    <header>
+      <div class="header-container">
+        <div>
+          <a href="index.html" class="logo-link">
+            <div class="logo">Spotrot.TTC</div>
+          </a>
+        </div>
+        <div class="center-search">
+          <input type="text" id="search-box" placeholder="Search routes...">
+        </div>
+        <div class="header-links">
+          <a href="https://forms.gle/your-google-form-link" target="_blank">Submit a Stop</a>
+          <a href="about.md">About</a>
+        </div>
       </div>
-      <div class="center-search">
-        <input type="text" id="search-box" placeholder="Search routes...">
-      </div>
-      <div class="header-links">
-        <a href="https://forms.gle/UGY1vgQ4dsnGey7U7" target="_blank">Submit a Stop</a>
-        <a href="about.html">About</a>
-      </div>
+    </header>
+    <div class="content-wrapper">
+      <main>
+        <h2>Going Towards West</h2>
+        <div class="container" id="grid-container-west"></div>
+        <h2>Going Towards East</h2>
+        <div class="container" id="grid-container-east"></div>
+        <h2>Going Towards North</h2>
+        <div class="container" id="grid-container-north"></div>
+        <h2>Going Towards South</h2>
+        <div class="container" id="grid-container-south"></div>
+      </main>
     </div>
-  </header>
-
-  <div class="content-wrapper">
-    <main>
-      <div class="container" id="grid-container">
-        <!-- Grid items will be dynamically populated here -->
+    <footer>
+      <div class="footer-content">
+        <div class="left">
+          &copy; KP (<a href="https://links.spotrot.com">links.spotrot.com</a>)
+        </div>
+        <div class="center">Not an official app. Official website: <a href="https://ttc.ca">ttc.ca</a>
+        </div>
+        <div class="right">Official news: <a href="https://ttc.ca/news">ttc.ca/news</a>
+        </div>
       </div>
-    </main>
-  </div>
-
-  <footer>
-    <div class="footer-content">
-      <div class="left">
-        &copy; KP (<a href="https://links.spotrot.com">links.spotrot.com</a>)
-      </div>
-      <div class="center">
-        Not an official app. Official website: <a href="https://ttc.ca">ttc.ca</a>
-      </div>
-      <div class="right">
-        Official news: <a href="https://ttc.ca/news">ttc.ca/news</a>
-      </div>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
+    </footer>
+    <script src="script.js"></script>
+  </body>
 </html>

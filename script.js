@@ -1,6 +1,10 @@
-document.addEventListener('DOMContentLoaded', () => {  // Ensure the DOM is fully loaded
-
-  const gridContainer = document.getElementById('grid-container');
+document.addEventListener('DOMContentLoaded', () => {
+  const gridContainers = {
+    'Towards West': document.getElementById('grid-container-west'),
+    'Towards East': document.getElementById('grid-container-east'),
+    'Towards North': document.getElementById('grid-container-north'),
+    'Towards South': document.getElementById('grid-container-south')
+  };
   const searchBox = document.getElementById('search-box');
 
   fetch('stops.csv')
@@ -9,23 +13,24 @@ document.addEventListener('DOMContentLoaded', () => {  // Ensure the DOM is full
       const rows = csvData.split('\n');
       const headers = rows[0].split(',');
 
-      // Function to create and add a grid item
       function addGridItem(stopData) {
         const gridItem = document.createElement('div');
         gridItem.classList.add('grid-item');
-        gridItem.dataset.recipient = '898882'; // Make sure this is the correct recipient number
+        gridItem.dataset.recipient = '898882';
         gridItem.dataset.body = stopData['Stop ID'];
 
         gridItem.innerHTML = `
-            <h3>${stopData['Stop Name']}</h3>
-            <p>${stopData['Intersection']}</p>
-            <p>Going ${stopData['Going Towards']}</p>
-            <p>Check timings</p>
-          `;
+          <h3>${stopData['Stop Name']}</h3>
+          <p>${stopData['Intersection']}</p>
+          <p>Going ${stopData['Going Towards']}</p>
+          <p>Check timings</p>
+        `;
 
-        gridContainer.appendChild(gridItem);
+        const direction = stopData['Going Towards'];
+        if (gridContainers[direction]) {
+          gridContainers[direction].appendChild(gridItem);
+        }
 
-        // Add event listener to the grid item
         gridItem.addEventListener('click', () => {
           const recipient = gridItem.dataset.recipient;
           const body = gridItem.dataset.body;
@@ -40,7 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {  // Ensure the DOM is full
         });
       }
 
-      // Initial population of the grid
       for (let i = 1; i < rows.length; i++) {
         const data = rows[i].split(',');
         if (data.length === headers.length) {
@@ -51,12 +55,10 @@ document.addEventListener('DOMContentLoaded', () => {  // Ensure the DOM is full
           addGridItem(stopData);
         }
       }
-      // addEventListenersToGridItems();  // No need to call this here
 
-      // Search functionality
       searchBox.addEventListener('input', () => {
         const searchTerm = searchBox.value.toLowerCase();
-        gridContainer.innerHTML = ''; // Clear the grid
+        gridContainer.innerHTML = '';
 
         for (let i = 1; i < rows.length; i++) {
           const data = rows[i].split(',');
@@ -71,16 +73,12 @@ document.addEventListener('DOMContentLoaded', () => {  // Ensure the DOM is full
             }
           }
         }
-        // addEventListenersToGridItems(); // No need to call this here
       });
-
     })
     .catch(error => {
       console.error("Error loading stop data:", error);
-      // Handle the error (e.g., display an error message on the page)
     });
 
-  // Dark/light mode based on time of day
   function setTheme() {
     const now = new Date();
     const hour = now.getHours();
@@ -91,6 +89,5 @@ document.addEventListener('DOMContentLoaded', () => {  // Ensure the DOM is full
     }
   }
 
-  setTheme(); // Set the initial theme on page load
-
-}); // End of DOMContentLoaded event listener
+  setTheme();
+});
