@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
         gridItem.innerHTML = `
           <h3>${stopData['Stop Name']}</h3>
           <p>${stopData['Intersection']}</p>
-          <p>Going ${stopData['Direction']}</p>
+          // <p>Going ${stopData['Direction']}</p>
           <p>Check timings</p>
         `;
 
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Create the category title
         const categoryTitle = document.createElement('h2');
-        categoryTitle.textContent = `Direction ${category}`; // Title for the category
+        categoryTitle.textContent = `Direction: ${category}`; // Title for the category
         categoryContainer.appendChild(categoryTitle);
 
         // Create the grid for the category
