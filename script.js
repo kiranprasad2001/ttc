@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
         gridItem.dataset.body = stopData['stop_code'];
 
         gridItem.innerHTML = `
-          <h3>${stopData['stop_name']}</h3>
+          <h4>${stopData['stop_name']}</h4>
           <p>${stopData['Routes']}</p>
         `;
 		
