@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			const filteredStops = groupedStops[category].filter(stopData => {
 				// Exclude 'stop_code' from the search
 				const searchableValues = Object.entries(stopData)
-					.filter(([key, _]) => key !== 'stop_code' && key !== 'Stop ID' && key !== 'stop_lon' && key !== 'stop_lat')  // Exclude irrelevant fields to search
+					.filter(([key, _]) => key !== 'stop_code' && key !== 'stop_id' && key !== 'stop_lon' && key !== 'stop_lat')  // Exclude irrelevant fields to search
 					.map(([_, value]) => value);
 
 				return searchableValues.some(value =>
