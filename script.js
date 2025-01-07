@@ -22,6 +22,17 @@ document.addEventListener('DOMContentLoaded', () => {
           <h3>${stopData['Stop Name']}</h3>
           <p>${stopData['Routes']}</p>
         `;
+		
+		gridItem.addEventListener('click', () => {
+			const recipient = gridItem.dataset.recipient;
+			const body = gridItem.dataset.body;
+
+			// Construct the SMS URL
+			const smsUrl = `sms:${recipient}?body=${body}`;
+
+			// Redirect to the SMS URL
+			window.location.href = smsUrl;
+		});
 
         return gridItem;
       }
