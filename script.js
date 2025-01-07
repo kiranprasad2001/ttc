@@ -85,11 +85,16 @@ document.addEventListener('DOMContentLoaded', () => {
 		
 		// Re-render grouped stops based on search term
 		Object.keys(groupedStops).forEach(category => {
-			const filteredStops = groupedStops[category].filter(stopData =>
-				Object.values(stopData).some(value =>
+			const filteredStops = groupedStops[category].filter(stopData => {
+				// Exclude 'stop_code' from the search
+				const searchableValues = Object.entries(stopData)
+					.filter(([key, _]) => key !== 'stop_code' && key !== 'Stop ID' && key !== 'stop_lon' && key !== 'stop_lat')  // Exclude irrelevant fields to search
+					.map(([_, value]) => value);
+
+				return searchableValues.some(value =>
 					value.toLowerCase().includes(searchTerm)
-				)
-			);
+				);
+			});
 		
 			if (filteredStops.length > 0) {
 				const categoryContainer = document.createElement('div');
