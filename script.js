@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         gridItem.innerHTML = `
           <h3>${stopData['stop_name']}</h3>
-          <p>${stopData['routes']}</p>
+          <p>${stopData['Routes']}</p>
         `;
 		
 		gridItem.addEventListener('click', () => {

@@ -1,4 +1,4 @@
-Stop ID,stop_code,stop_name,stop_lat,stop_lon,Routes,Direction
+stop_id,stop_code,stop_name,stop_lat,stop_lon,Routes,Direction
 572,259,Bathurst St at Clark Ave West South Side,43.802899,-79.448396,160,Northbound
 573,8117,Spadina Rd at Bernard Ave South Side,43.671797,-79.405979,127,Southbound
 575,9151,Keele St at Grandravine Dr,43.751925,-79.487981,341 | 41,Northbound
