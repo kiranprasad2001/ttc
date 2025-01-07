@@ -15,12 +15,12 @@ document.addEventListener('DOMContentLoaded', () => {
       function addGridItem(stopData) {
         const gridItem = document.createElement('div');
         gridItem.classList.add('grid-item');
-        gridItem.dataset.recipient = '898882'; // Make sure this is the correct recipient number
-        gridItem.dataset.body = stopData['Stop ID'];
+        gridItem.dataset.recipient = '898882';
+        gridItem.dataset.body = stopData['stop_code'];
 
         gridItem.innerHTML = `
-          <h3>${stopData['Stop Name']}</h3>
-          <p>${stopData['Routes']}</p>
+          <h3>${stopData['stop_name']}</h3>
+          <p>${stopData['routes']}</p>
         `;
 		
 		gridItem.addEventListener('click', () => {
