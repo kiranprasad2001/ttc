@@ -20,8 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         gridItem.innerHTML = `
           <h3>${stopData['Stop Name']}</h3>
-          <p>${stopData['Intersection']}</p>
-          <p>Check timings</p>
+          <p>${stopData['Routes']}</p>
         `;
 
         return gridItem;
