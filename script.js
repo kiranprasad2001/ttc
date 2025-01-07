@@ -87,9 +87,10 @@ document.addEventListener('DOMContentLoaded', () => {
 		Object.keys(groupedStops).forEach(category => {
 			const filteredStops = groupedStops[category].filter(stopData => {
 				// Exclude 'stop_code' from the search
-				const searchableValues = Object.entries(stopData)
-					.filter(([key, _]) => key !== 'stop_code' && key !== 'stop_id' && key !== 'stop_lon' && key !== 'stop_lat')  // Exclude irrelevant fields to search
-					.map(([_, value]) => value);
+				const searchableValues = [stopData['stop_name'], stopData['Routes'], stopData['Direction']];
+				//const searchableValues = Object.entries(stopData)
+				//	.filter(([key, _]) => key !== 'stop_code' && key !== 'stop_id' && key !== 'stop_lon' && key !== 'stop_lat')  // Exclude irrelevant fields to search
+				//	.map(([_, value]) => value);
 
 				return searchableValues.some(value =>
 					value.toLowerCase().includes(searchTerm)
