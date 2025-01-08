@@ -39,6 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 backgroundImageDiv.classList.add('background-image');
                 if (backgroundImage) {
                     backgroundImageDiv.style.backgroundImage = `url('assets/${backgroundImage}')`;
+                    backgroundImageDiv.loading = "lazy"; // Adding lazy loading attribute
                 }
 
                 // Create the content div
