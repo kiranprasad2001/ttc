@@ -102,6 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				categoryTitle.addEventListener('click', () => {
 					grid.style.display = grid.style.display === 'none' ? 'grid' : 'none';
 				});
+				// to remove this block based on user feedback
 				
                 categoryContainer.appendChild(grid);
                 gridContainer.appendChild(categoryContainer);
@@ -139,6 +140,16 @@ document.addEventListener('DOMContentLoaded', () => {
                         gridContainer.appendChild(categoryContainer);
                     }
                 });
+				
+				// Adding click event listeners to the category titles after searching
+				const categoryTitles = gridContainer.querySelectorAll('.category-container h2');
+				categoryTitles.forEach(categoryTitle => {
+					const grid = categoryTitle.nextElementSibling; // Get the grid element
+					categoryTitle.addEventListener('click', () => {
+						grid.style.display = grid.style.display === 'none' ? 'grid' : 'none';
+					});
+				});
+				// to remove this block based on user feedback
             });
         })
         .catch(error => {
