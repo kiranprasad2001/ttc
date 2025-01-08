@@ -77,6 +77,12 @@ header {
   transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
 }
 
+.compact-grid-item {
+    font-size: 14px;  // Reduce font size
+    padding: 10px;  // Reduce padding
+    margin: 5px;  // Reduce margin
+}
+
 .grid-item:hover {
   transform: translateY(-5px);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
