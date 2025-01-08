@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     gridItem.style.backgroundImage = `url('assets/${backgroundImage}')`;
                     gridItem.style.backgroundSize = "cover"; 
                     gridItem.style.backgroundRepeat = "no-repeat";
-                    gridItem.style.filter = "blur(25px)"; 
+                    gridItem.style.filter = "blur(50px)"; 
                 }
 
                 gridItem.innerHTML = `
