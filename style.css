@@ -86,7 +86,6 @@ header {
     height: 100%;
     background-size: cover;
     background-repeat: no-repeat;
-    filter: blur(1px); /* Apply blur only to the background image */
     z-index: -1; /* Place the background image behind the content */
 	opacity: 0.2
 }
