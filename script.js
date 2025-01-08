@@ -136,5 +136,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   setTheme(); // Set the initial theme on page load
+  setInterval(setTheme, 60000); // Update every minute
 
 });
