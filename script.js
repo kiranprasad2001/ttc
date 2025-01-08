@@ -97,7 +97,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     const gridItem = addGridItem(stopData);
                     grid.appendChild(gridItem);
                 });
-
+				
+				// Adding click event listener to the category title to toggle visibility
+				categoryTitle.addEventListener('click', () => {
+					grid.style.display = grid.style.display === 'none' ? 'grid' : 'none';
+				});
+				
                 categoryContainer.appendChild(grid);
                 gridContainer.appendChild(categoryContainer);
             });
