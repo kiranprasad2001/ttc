@@ -22,13 +22,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 let backgroundImage = "";
                 switch (stopData.Type.trim()) {
                     case "Streetcar":
-                        backgroundImage = "ttc_streetcar_overlay.jpg";
+                        backgroundImage = "ttc_streetcar-overlay.jpg";
                         break;
                     case "Bus":
-                        backgroundImage = "ttc_bus_overlay.jpg";
+                        backgroundImage = "ttc_bus-overlay.jpg";
                         break;
                     case "All":
-                        backgroundImage = "ttc_all_overlay.jpg";
+                        backgroundImage = "ttc_all-overlay.jpg";
                         break;
                     default:
                         backgroundImage = "images.jpg"; // Or a default image if needed
