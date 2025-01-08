@@ -31,31 +31,35 @@ document.addEventListener('DOMContentLoaded', () => {
                         backgroundImage = "ttc_all_overlay.jpg";
                         break;
                     default:
-                        backgroundImage = "images.jpg";
+                        backgroundImage = "images.jpg"; // Or a default image if needed
                 }
 
+                // Create the background image div
+                const backgroundImageDiv = document.createElement('div');
+                backgroundImageDiv.classList.add('background-image');
                 if (backgroundImage) {
-                    gridItem.style.backgroundImage = `url('assets/${backgroundImage}')`;
-                    gridItem.style.backgroundSize = "cover"; 
-                    gridItem.style.backgroundRepeat = "no-repeat";
-                    gridItem.style.filter = "blur(12px)"; 
+                    backgroundImageDiv.style.backgroundImage = `url('assets/${backgroundImage}')`;
                 }
 
-                gridItem.innerHTML = `
+                // Create the content div
+                const contentDiv = document.createElement('div');
+                contentDiv.classList.add('content');
+                contentDiv.innerHTML = `
                     <h4>${stopData['stop_name']}</h4>
                     <p>${stopData['Routes']}</p>
                 `;
 
-                gridItem.addEventListener('click', () => {
+                // Add click event listener to the content div
+                contentDiv.addEventListener('click', () => {
                     const recipient = gridItem.dataset.recipient;
                     const body = gridItem.dataset.body;
-
-                    // Construct the SMS URL
                     const smsUrl = `sms:${recipient}?body=${body}`;
-
-                    // Redirect to the SMS URL
                     window.location.href = smsUrl;
                 });
+
+                // Append the background image and content divs to the grid item
+                gridItem.appendChild(backgroundImageDiv);
+                gridItem.appendChild(contentDiv);
 
                 return gridItem;
             }
@@ -82,16 +86,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 const categoryContainer = document.createElement('div');
                 categoryContainer.classList.add('category-container');
 
-                // Create the category title
                 const categoryTitle = document.createElement('h2');
-                categoryTitle.textContent = `Direction: ${category}`; // Title for the category
+                categoryTitle.textContent = `Direction: ${category}`;
                 categoryContainer.appendChild(categoryTitle);
 
-                // Create the grid for the category
                 const grid = document.createElement('div');
                 grid.classList.add('grid');
-
-                // Add each stop in the category to the grid
                 groupedStops[category].forEach(stopData => {
                     const gridItem = addGridItem(stopData);
                     grid.appendChild(gridItem);
@@ -106,15 +106,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 const searchTerm = searchBox.value.toLowerCase();
                 gridContainer.innerHTML = ''; // Clear the grid
 
-                // Re-render grouped stops based on search term
                 Object.keys(groupedStops).forEach(category => {
                     const filteredStops = groupedStops[category].filter(stopData => {
-                        // Exclude 'stop_code' from the search
                         const searchableValues = [stopData['stop_name'], stopData['Routes'], stopData['Direction']];
-                        //const searchableValues = Object.entries(stopData)
-                        //  .filter(([key, _]) => key !== 'stop_code' && key !== 'stop_id' && key !== 'stop_lon' && key !== 'stop_lat')   // Exclude irrelevant fields to search
-                        //  .map(([_, value]) => value);
-
                         return searchableValues.some(value =>
                             value.toLowerCase().includes(searchTerm)
                         );
@@ -140,8 +134,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 });
             });
-
-
         })
         .catch(error => {
             console.error("Error loading stop data:", error);
@@ -160,5 +152,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setTheme(); // Set the initial theme on page load
     setInterval(setTheme, 60000); // Update every minute
-
 });
