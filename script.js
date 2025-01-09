@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
             stopElement.innerHTML = `
                 <div class="background-image" style="background-image: url('assets/${backgroundImage}');"></div>
                 <div class="content">
-                    <div class="accessibility-icon">${accessibilityIcon}</div> <div class="accessibility-icon" style="position: absolute; top: 10px; right: 10px; z-index: 2; background-color: white; padding: 2px; border-radius: 4px;">${accessibilityIcon}</div>
+                    <div class="accessibility-icon" style="position: absolute; top: 10px; left: 10px; z-index: 2; background-color: white; padding: 2px; border-radius: 4px;">${accessibilityIcon}</div>
                     <h4>${stop.stop_name}</h4>
                     <p>${stop.Routes} - ${Math.round(stop.distance || 0)}m</p>
                     <p>${stop.Direction}</p>
