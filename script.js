@@ -113,14 +113,14 @@ document.addEventListener('DOMContentLoaded', () => {
             // Display distance in km if more than 1km
             const distanceString = stop.distance > 1000
                 ? (stop.distance / 1000).toFixed(2) + "km"
-                : Math.round(stop.distance) + "m";    
+                : Math.round(stop.distance) + "m";
 
             stopElement.innerHTML = `
                 <div class="background-image" style="background-image: url('assets/${backgroundImage}');"></div>
                 <div class="accessibility-icon" style="position: absolute; top: 1px; left: 1px; z-index: 2; background-color: white; padding: 1px; border-radius: 1px;">${accessibilityIcon}</div>
                 <div class="content">
                     <h4>${stop.stop_name}</h4>
-                    <p>${stop.Routes} - ${Math.round(stop.distance || 0)}m</p>
+                    <p>${stop.Routes} - ${distanceString}</p>
                     <p>${stop.Direction}</p>
                 </div>
             `;
