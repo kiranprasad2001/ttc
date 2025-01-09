@@ -163,7 +163,10 @@ document.addEventListener('DOMContentLoaded', () => {
     searchBox.addEventListener('input', () => {
         const searchTerm = searchBox.value.toLowerCase();
         const filteredStops = stopsData.filter(stop => {
-            return stop.stop_name.toLowerCase().includes(searchTerm);
+            // Check if any of the searchable fields include the search term
+            return stop.stop_name.toLowerCase().includes(searchTerm) ||
+                   stop.Routes.toLowerCase().includes(searchTerm) ||
+                   stop.stop_code.toLowerCase().includes(searchTerm);
         });
 
         // Sort filteredStops by distance

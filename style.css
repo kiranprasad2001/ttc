@@ -168,6 +168,10 @@ footer {
         align-items: flex-start;
     }
 
+    .search-container #search-box {
+        width: 95%;
+    }
+
     .footer-content {
         flex-direction: column;
         text-align: center;
@@ -217,7 +221,7 @@ footer {
 }
 
 .search-container #search-box {
-    width: 50%; /* Adjust width as needed */
+    width: 80%; /* Adjust width as needed */
     max-width: 600px;
     padding: 12px;
     font-size: 18px;
