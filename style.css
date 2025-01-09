@@ -31,6 +31,7 @@ header {
 .logo {
     font-weight: bold;
     font-size: 20px;
+    color: black;
 }
 
 .logo-link {

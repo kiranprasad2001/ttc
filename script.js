@@ -3,6 +3,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchBox = document.getElementById('search-box');
     let stopsData = [];
     let userLatitude, userLongitude;
+    let stopsDataPromise = fetch('stops.csv')
+    .then(response => response.text())
+    .then(csvData => parseCSV(csvData));
 
     // Fetch and parse the CSV file
     fetch('stops.csv')
@@ -71,7 +74,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 ...stop,
                 distance: haversineDistance(latitude, longitude, parseFloat(stop.stop_lat), parseFloat(stop.stop_lon))
             }))
-            .filter(stop => stop.distance <= 1000)
+            // Filter stops within 500m first. if it works, will try more options like segregated distances
+            .filter(stop => stop.distance <= 500)
             .sort((a, b) => a.distance - b.distance);
     }
 
@@ -94,13 +98,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 All: "ttc_all.jpg",
             }[stop.Type?.trim()] || "default.jpg";
 
+            // Accessibility icon for stops with accessibility - took it from TTC website - Don't blame if it's wrong
+            const accessibilityIcon = stop.Accessibility === "1"
+                ? `<svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2.924 1.476c-.802 0-1.475.673-1.475 1.475V19.1c0 .803.673 1.476 1.476 1.476h16.15c.803 0 1.476-.673 1.476-1.476V2.925c0-.803-.673-1.476-1.476-1.476H2.925V1.476z" fill="#0082C9"></path>
+                </svg>`
+                : '';
+
             stopElement.innerHTML = `
-                <div class="background-image" style="background-image: url('assets/${backgroundImage}');"></div>
+                <div class="background-image" style="background-image: url('assets/${backgroundImage}');">
+                    <div class="accessibility-icon">${accessibilityIcon}</div>
+                </div>
                 <div class="content">
                     <h4>${stop.stop_name}</h4>
-                    <p>${stop.Routes} - ${Math.round(stop.distance)}m</p>
+                    <p>${stop.Routes} - ${Math.round(stop.distance || 0)}m</p>
                 </div>
             `;
+
             stopElement.addEventListener('click', () => {
                 const smsUrl = `sms:898882?body=${stop.stop_code}`;
                 window.location.href = smsUrl;
