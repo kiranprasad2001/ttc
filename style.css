@@ -29,7 +29,7 @@ header {
 }
 
 .logo-image {
-    height: 20px; /* Adjust this value to match the current height of your text logo */
+    height: 20px;
     width: auto; /* Maintain aspect ratio */
 }
 
@@ -175,7 +175,7 @@ footer {
     }
 
     .logo-image {
-        height: 20px; /* Reduce the height for smaller screens */
+        height: 60px; /* Reduce the height for smaller screens */
     }
     
     .container {
