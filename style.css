@@ -234,9 +234,10 @@ footer {
 /* Google-style Search Container */
 .search-container {
     display: flex;
+    flex-direction: column
     justify-content: center;
     align-items: center;
-    height: 100px; /* Adjust height as needed */
+    height: 150px; /* Adjust height as needed */
     background-color: #f9f9f9; /* Example background color */
     padding: 20px;
 }
@@ -249,6 +250,7 @@ footer {
     border: 1px solid #ddd;
     border-radius: 24px; /* Google-style rounded corners */
     box-sizing: border-box;
+    margin-bottom: 10px; /* Add space between search box and link */
 }
 
 /* Dark Mode Styles */
