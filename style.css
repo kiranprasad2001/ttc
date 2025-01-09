@@ -234,7 +234,7 @@ footer {
 /* Google-style Search Container */
 .search-container {
     display: flex;
-    flex-direction: column
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 150px; /* Adjust height as needed */
@@ -318,7 +318,7 @@ body.dark-mode .footer-content a:hover {
 .modal {
     display: none;
     position: fixed;
-    z-index: 1;
+    z-index: 10;
     left: 0;
     top: 0;
     width: 100%;
