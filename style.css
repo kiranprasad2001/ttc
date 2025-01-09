@@ -175,7 +175,7 @@ footer {
     }
 
     .logo-image {
-        height: 60px; /* Reduce the height for smaller screens */
+        height: 50px; /* Reduces the height for smaller screens */
     }
     
     .container {
