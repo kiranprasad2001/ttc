@@ -28,10 +28,9 @@ header {
     color: white;
 }
 
-.logo {
-    font-weight: bold;
-    font-size: 20px;
-    color: black;
+.logo-image {
+    height: 20px; /* Adjust this value to match the current height of your text logo */
+    width: auto; /* Maintain aspect ratio */
 }
 
 .logo-link {
