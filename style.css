@@ -64,6 +64,16 @@ header {
     cursor: pointer;
     border-radius: 10px;
     transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    display: flex; /* Make grid-item a flex container */
+    align-items: center; /* Vertically align items */
+}
+
+.grid-item svg { /* Target the SVG directly */
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 24px;
+    height: 24px;
 }
 
 .background-image {
