@@ -35,22 +35,6 @@ header {
     color: inherit;
 }
 
-.center-search {
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-}
-
-#search-box {
-    width: 80%;
-    max-width: 500px;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-}
-
 .header-links {
     display: flex;
     gap: 15px;
@@ -87,7 +71,7 @@ header {
     background-size: cover;
     background-repeat: no-repeat;
     z-index: -1; /* Place the background image behind the content */
-	opacity: 0.2
+    opacity: 0.2
 }
 
 .content {
@@ -220,4 +204,76 @@ footer {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 10px;
+}
+
+/* Google-style Search Container */
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px; /* Adjust height as needed */
+    background-color: #f9f9f9; /* Example background color */
+    padding: 20px;
+}
+
+.search-container #search-box {
+    width: 50%; /* Adjust width as needed */
+    max-width: 600px;
+    padding: 12px;
+    font-size: 18px;
+    border: 1px solid #ddd;
+    border-radius: 24px; /* Google-style rounded corners */
+    box-sizing: border-box;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #333;
+    color: #eee;
+}
+
+body.dark-mode header {
+    background-color: #222;
+    border-bottom-color: #555;
+}
+
+body.dark-mode .logo {
+    color: #eee;
+}
+
+body.dark-mode .header-links a {
+    color: #eee;
+}
+
+body.dark-mode .search-container {
+    background-color: #292929;
+}
+
+body.dark-mode .search-container #search-box {
+    background-color: #1f1f1f;
+    border-color: #555;
+    color: #eee;
+}
+
+body.dark-mode .grid-item {
+    background-color: #444;
+    color: #eee;
+    border-color: #555;
+}
+
+body.dark-mode .grid-item:hover {
+    background-color: #555;
+}
+
+body.dark-mode footer {
+    background-color: #222;
+    border-top-color: #555;
+}
+
+body.dark-mode .footer-content a {
+    color: #eee;
+}
+
+body.dark-mode .footer-content a:hover {
+    color: #fff;
 }

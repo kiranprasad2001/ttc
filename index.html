@@ -14,9 +14,9 @@
   <meta name="apple-mobile-web-app-capable" content="yes"> 
   <meta name="apple-mobile-web-app-status-bar-style" content="black"> 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preload" href="assets/ttc_streetcar_overlay.jpg" as="image">
-  <link rel="preload" href="assets/ttc_bus_overlay.jpg" as="image">
-  <link rel="preload" href="assets/ttc_all_overlay.jpg" as="image">
+  <link rel="preload" href="assets/ttc_streetcar.jpg" as="image">
+  <link rel="preload" href="assets/ttc_bus.jpg" as="image">
+  <link rel="preload" href="assets/ttc_all.jpg" as="image">
 </head>
 <body>
   <header>
@@ -25,9 +25,6 @@
         <a href="index.html" class="logo-link">
           <div class="logo">Spotrot</div>
         </a>
-      </div>
-      <div class="center-search">
-        <input type="text" id="search-box" placeholder="Search routes...">
       </div>
       <div class="header-links">
         <a href="https://forms.gle/UGY1vgQ4dsnGey7U7" target="_blank">Submit Stop</a>
@@ -38,9 +35,10 @@
 
   <div class="content-wrapper">
     <main>
-      <div class="container" id="grid-container">
-        <!-- Grid items will be dynamically populated here -->
+      <div class="search-container">
+        <input type="text" id="search-box" placeholder="Search for TTC stops or Routes...">
       </div>
+      <div class="container" id="grid-container"></div>
     </main>
   </div>
 

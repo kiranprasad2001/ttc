@@ -1,160 +1,180 @@
 document.addEventListener('DOMContentLoaded', () => {
     const gridContainer = document.getElementById('grid-container');
     const searchBox = document.getElementById('search-box');
+    let stopsData =;
+    let userLatitude, userLongitude;
 
+    // Fetch and parse the CSV file
     fetch('stops.csv')
         .then(response => response.text())
         .then(csvData => {
-            const rows = csvData.split('\n');
-            const headers = rows[0].split(',');
+            stopsData = parseCSV(csvData);
 
-            // Group stops by the "Direction" column
-            const groupedStops = {};
-
-            // Function to create and add a grid item
-            function addGridItem(stopData) {
-                const gridItem = document.createElement('div');
-                gridItem.classList.add('grid-item');
-                gridItem.dataset.recipient = '898882';
-                gridItem.dataset.body = stopData['stop_code'];
-
-                // Set the background image based on the "Type" column
-                let backgroundImage = "";
-                switch (stopData.Type.trim()) {
-                    case "Streetcar":
-                        backgroundImage = "ttc_streetcar.jpg";
-                        break;
-                    case "Bus":
-                        backgroundImage = "ttc_bus.jpg";
-                        break;
-                    case "All":
-                        backgroundImage = "ttc_all.jpg";
-                        break;
-                    default:
-                        backgroundImage = "images.jpg"; // Or a default image if needed
-                }
-
-                // Create the background image div
-                const backgroundImageDiv = document.createElement('div');
-                backgroundImageDiv.classList.add('background-image');
-                if (backgroundImage) {
-                    backgroundImageDiv.style.backgroundImage = `url('assets/${backgroundImage}')`;
-                    backgroundImageDiv.loading = "lazy"; // Adding lazy loading attribute
-                }
-
-                // Create the content div
-                const contentDiv = document.createElement('div');
-                contentDiv.classList.add('content');
-                contentDiv.innerHTML = `
-                    <h4>${stopData['stop_name']}</h4>
-                    <p>${stopData['Routes']}</p>
-                `;
-
-                // Add click event listener to the content div
-                contentDiv.addEventListener('click', () => {
-                    const recipient = gridItem.dataset.recipient;
-                    const body = gridItem.dataset.body;
-                    const smsUrl = `sms:${recipient}?body=${body}`;
-                    window.location.href = smsUrl;
+            // Get user's location
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(position => {
+                    userLatitude = position.coords.latitude;
+                    userLongitude = position.coords.longitude;
+                    const nearbyStops = getNearbyStops(userLatitude, userLongitude);
+                    displayStops(nearbyStops);
+                }, error => {
+                    console.error("Error getting location:", error);
+                    displayStops(stopsData); // Display all stops if location is not available
                 });
-
-                // Append the background image and content divs to the grid item
-                gridItem.appendChild(backgroundImageDiv);
-                gridItem.appendChild(contentDiv);
-
-                return gridItem;
+            } else {
+                console.log("Geolocation is not supported by this browser.");
+                displayStops(stopsData); // Display all stops if geolocation is not supported
             }
-
-            // Populate groupedStops with stops categorized by "Direction"
-            for (let i = 1; i < rows.length; i++) {
-                const data = rows[i].split(',');
-                if (data.length === headers.length) {
-                    const stopData = {};
-                    for (let j = 0; j < headers.length; j++) {
-                        stopData[headers[j]] = data[j];
-                    }
-
-                    const category = stopData['Direction'].trim();
-                    if (!groupedStops[category]) {
-                        groupedStops[category] = [];
-                    }
-                    groupedStops[category].push(stopData);
-                }
-            }
-
-            // Render grouped stops
-            Object.keys(groupedStops).forEach(category => {
-                const categoryContainer = document.createElement('div');
-                categoryContainer.classList.add('category-container');
-
-                const categoryTitle = document.createElement('h2');
-                categoryTitle.textContent = `Direction: ${category}`;
-                categoryContainer.appendChild(categoryTitle);
-
-                const grid = document.createElement('div');
-                grid.classList.add('grid');
-                groupedStops[category].forEach(stopData => {
-                    const gridItem = addGridItem(stopData);
-                    grid.appendChild(gridItem);
-                });
-				
-				// Adding click event listener to the category title to toggle visibility
-				categoryTitle.addEventListener('click', () => {
-					grid.style.display = grid.style.display === 'none' ? 'grid' : 'none';
-				});
-				// to remove this block based on user feedback
-				
-                categoryContainer.appendChild(grid);
-                gridContainer.appendChild(categoryContainer);
-            });
-
-            // Search functionality
-            searchBox.addEventListener('input', () => {
-                const searchTerm = searchBox.value.toLowerCase();
-                gridContainer.innerHTML = ''; // Clear the grid
-
-                Object.keys(groupedStops).forEach(category => {
-                    const filteredStops = groupedStops[category].filter(stopData => {
-                        const searchableValues = [stopData['stop_name'], stopData['Routes'], stopData['Direction']];
-                        return searchableValues.some(value =>
-                            value.toLowerCase().includes(searchTerm)
-                        );
-                    });
-
-                    if (filteredStops.length > 0) {
-                        const categoryContainer = document.createElement('div');
-                        categoryContainer.classList.add('category-container');
-
-                        const categoryTitle = document.createElement('h2');
-                        categoryTitle.textContent = `Direction ${category}`;
-                        categoryContainer.appendChild(categoryTitle);
-
-                        const grid = document.createElement('div');
-                        grid.classList.add('grid');
-                        filteredStops.forEach(stopData => {
-                            const gridItem = addGridItem(stopData);
-                            grid.appendChild(gridItem);
-                        });
-
-                        categoryContainer.appendChild(grid);
-                        gridContainer.appendChild(categoryContainer);
-                    }
-                });
-				
-				// Adding click event listeners to the category titles after searching
-				const categoryTitles = gridContainer.querySelectorAll('.category-container h2');
-				categoryTitles.forEach(categoryTitle => {
-					const grid = categoryTitle.nextElementSibling; // Get the grid element
-					categoryTitle.addEventListener('click', () => {
-						grid.style.display = grid.style.display === 'none' ? 'grid' : 'none';
-					});
-				});
-				// to remove this block based on user feedback
-            });
-        })
-        .catch(error => {
-            console.error("Error loading stop data:", error);
         });
+
+    // Function to parse CSV data
+    function parseCSV(csvData) {
+        const rows = csvData.split('\n');
+        const headers = rows[0].split(',');
+        const parsedData =;
+
+        for (let i = 1; i < rows.length; i++) {
+            const data = rows[i].split(',');
+            if (data.length === headers.length) {
+                const stopData = {};
+                for (let j = 0; j < headers.length; j++) {
+                    stopData[headers[j]] = data[j];
+                }
+                parsedData.push(stopData);
+            }
+        }
+        return parsedData;
+    }
+
+    // Function to calculate distance between two coordinates (Haversine formula)
+    function haversineDistance(lat1, lon1, lat2, lon2) {
+        const R = 6371; // Radius of the earth in km
+        const dLat = deg2rad(lat2 - lat1);
+        const dLon = deg2rad(lon2 - lon1);
+        const a =
+            Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+            Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
+            Math.sin(dLon / 2) * Math.sin(dLon / 2);
+        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        const d = R * c; // Distance in km
+        return d * 1000; // Distance in meters
+    }
+
+    function deg2rad(deg) {
+        return deg * (Math.PI / 180);
+    }
+
+    // Get nearby stops based on browser location
+    function getNearbyStops(latitude, longitude) {
+        const stopsWithin500m = [];
+        const stopsWithin750m = [];
+        const stopsWithin1km = [];
+
+        stopsData.forEach(stop => {
+            const distance = haversineDistance(latitude, longitude, parseFloat(stop.stop_lat), parseFloat(stop.stop_lon));
+            if (distance <= 500) {
+                stopsWithin500m.push(stop);
+            } else if (distance <= 750) {
+                stopsWithin750m.push(stop);
+            } else if (distance <= 1000) {
+                stopsWithin1km.push(stop);
+            }
+        });
+
+        if (stopsWithin500m.length > 0) {
+            return stopsWithin500m;
+        } else if (stopsWithin750m.length > 0) {
+            return stopsWithin750m;
+        } else if (stopsWithin1km.length > 0) {
+            return stopsWithin1km;
+        } else {
+            return null;
+        }
+    }
+
+    // Display stops in the grid
+    function displayStops(stops) {
+        gridContainer.innerHTML = ''; // Clear previous results
+
+        if (stops === null) {
+            gridContainer.innerHTML = '<p>No stops found within 1km.</p>';
+            return;
+        }
+
+        if (stops.length === 0) {
+            gridContainer.innerHTML = '<p>No stops found.</p>';
+            return;
+        }
+
+        stops.forEach(stop => {
+            const stopElement = document.createElement('div');
+            stopElement.classList.add('grid-item');
+            stopElement.dataset.recipient = '898882';
+            stopElement.dataset.body = stop['stop_code'];
+
+            // Set the background image based on the "Type" column
+            let backgroundImage = "";
+            switch (stop.Type.trim()) {
+                case "Streetcar":
+                    backgroundImage = "ttc_streetcar.jpg";
+                    break;
+                case "Bus":
+                    backgroundImage = "ttc_bus.jpg";
+                    break;
+                case "All":
+                    backgroundImage = "ttc_all.jpg";
+                    break;
+                default:
+                    backgroundImage = "images.jpg";
+            }
+
+            // Create the background image div
+            const backgroundImageDiv = document.createElement('div');
+            backgroundImageDiv.classList.add('background-image');
+            if (backgroundImage) {
+                backgroundImageDiv.style.backgroundImage = `url('assets/${backgroundImage}')`;
+                backgroundImageDiv.loading = "lazy";
+            }
+
+            // Create the content div
+            const contentDiv = document.createElement('div');
+            contentDiv.classList.add('content');
+            contentDiv.innerHTML = `
+                <h4>${stop['stop_name']}</h4>
+                <p>${stop['Routes']}</p>
+            `;
+
+            // Add click event listener to the content div
+            contentDiv.addEventListener('click', () => {
+                const recipient = stopElement.dataset.recipient;
+                const body = stopElement.dataset.body;
+                const smsUrl = `sms:${recipient}?body=${body}`;
+                window.location.href = smsUrl;
+            });
+
+            // Append the background image and content divs to the grid item
+            stopElement.appendChild(backgroundImageDiv);
+            stopElement.appendChild(contentDiv);
+            gridContainer.appendChild(stopElement);
+        });
+    }
+
+    // Search functionality with distance priority
+    searchBox.addEventListener('input', () => {
+        const searchTerm = searchBox.value.toLowerCase();
+        const filteredStops = stopsData.filter(stop => {
+            return stop.stop_name.toLowerCase().includes(searchTerm);
+        });
+
+        // Sort filteredStops by distance
+        filteredStops.sort((a, b) => {
+            const distanceA = haversineDistance(userLatitude, userLongitude, parseFloat(a.stop_lat), parseFloat(a.stop_lon));
+            const distanceB = haversineDistance(userLatitude, userLongitude, parseFloat(b.stop_lat), parseFloat(b.stop_lon));
+            return distanceA - distanceB;
+        });
+
+        displayStops(filteredStops);
+    });
 
     // Dark/light mode based on time of day
     function setTheme() {
