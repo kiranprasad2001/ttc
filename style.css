@@ -5,6 +5,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    background-color: #f8f9fa;
 }
 
 .content-wrapper {
@@ -46,20 +47,30 @@ header {
     font-family: sans-serif;
 }
 
-/* Make sure the grids have proper structure */
-.container {
-    display: flex;
-    flex-direction: column;
+/* Grid container with proper spacing and responsiveness */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Ensure minimum column width */
+    gap: 15px; /* Add padding between grid items */
+    padding: 15px; /* Add padding around the grid */
 }
 
 .grid-item {
-    position: relative; /* To position the background image */
+    position: relative;
     border: 1px solid #ccc;
-    padding: 20px;
-    text-align: center;
-    cursor: pointer;
     border-radius: 10px;
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    background-color: #fff;
+    text-align: center;
+    padding: 15px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    overflow: hidden;
+}
+
+.grid-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .background-image {
@@ -71,24 +82,31 @@ header {
     background-size: cover;
     background-repeat: no-repeat;
     z-index: -1; /* Place the background image behind the content */
-    opacity: 0.2
+    opacity: 0.2;
 }
 
 .content {
-    position: relative; /* Ensure content is positioned relative to the grid item */
-    z-index: 1; /* Place the content above the background image */
-    /* ... other styles for the content ... */
+    position: relative;
+    z-index: 1;
 }
 
+.content h4 {
+    font-size: 16px;
+    margin: 5px 0;
+    color: #333;
+}
+
+.content p {
+    font-size: 14px;
+    margin: 0;
+    color: #555;
+}
+
+/* Compact grid items for smaller screens */
 .compact-grid-item {
-    font-size: 14px; // Reduce font size
-    padding: 10px; // Reduce padding
-    margin: 5px; // Reduce margin
-}
-
-.grid-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    padding: 10px;
+    margin: 5px;
 }
 
 /* About page container */
@@ -153,23 +171,21 @@ footer {
 }
 
 /* Responsive layout */
-@media (max-width: 600px) {
-    .container {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
     }
+}
 
-    #search-box {
-        width: 95%;
+@media (max-width: 480px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr); /* Ensure at least 2 items per row */
     }
 
     .header-links {
         flex-direction: column;
         gap: 10px;
         align-items: flex-start;
-    }
-
-    .search-container #search-box {
-        width: 95%;
     }
 
     .footer-content {
@@ -194,42 +210,6 @@ footer {
     color: #005f99;
 }
 
-/* Add margin or padding to ensure spacing between grids */
-.category-container {
-    margin-bottom: 30px; /* Adds space between grid categories */
-}
-
-.category-container h2 {
-    font-size: 1.5em;
-    margin-bottom: 10px;
-}
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 10px;
-}
-
-/* Google-style Search Container */
-.search-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100px; /* Adjust height as needed */
-    background-color: #f9f9f9; /* Example background color */
-    padding: 20px;
-}
-
-.search-container #search-box {
-    width: 80%; /* Adjust width as needed */
-    max-width: 600px;
-    padding: 12px;
-    font-size: 18px;
-    border: 1px solid #ddd;
-    border-radius: 24px; /* Google-style rounded corners */
-    box-sizing: border-box;
-}
-
 /* Dark Mode Styles */
 body.dark-mode {
     background-color: #333;
@@ -246,16 +226,6 @@ body.dark-mode .logo {
 }
 
 body.dark-mode .header-links a {
-    color: #eee;
-}
-
-body.dark-mode .search-container {
-    background-color: #292929;
-}
-
-body.dark-mode .search-container #search-box {
-    background-color: #1f1f1f;
-    border-color: #555;
     color: #eee;
 }
 
