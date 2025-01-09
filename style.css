@@ -5,7 +5,6 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: #f8f9fa;
 }
 
 .content-wrapper {
@@ -24,6 +23,9 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: #007bff;
+    padding: 10px 20px;
+    color: white;
 }
 
 .logo {
@@ -47,30 +49,20 @@ header {
     font-family: sans-serif;
 }
 
-/* Grid container with proper spacing and responsiveness */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Ensure minimum column width */
-    gap: 15px; /* Add padding between grid items */
-    padding: 15px; /* Add padding around the grid */
+/* Make sure the grids have proper structure */
+.container {
+    display: flex;
+    flex-direction: column;
 }
 
 .grid-item {
-    position: relative;
+    position: relative; /* To position the background image */
     border: 1px solid #ccc;
-    border-radius: 10px;
-    background-color: #fff;
-    text-align: center;
     padding: 15px;
+    text-align: center;
     cursor: pointer;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    overflow: hidden;
-}
-
-.grid-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
 }
 
 .background-image {
@@ -81,32 +73,25 @@ header {
     height: 100%;
     background-size: cover;
     background-repeat: no-repeat;
-    z-index: -1; /* Place the background image behind the content */
-    opacity: 0.2;
+    z-index: -1; /* Places the background image behind the content */
+    opacity: 0.2
 }
 
 .content {
-    position: relative;
-    z-index: 1;
+    position: relative; /* Ensures content is positioned relative to the grid item */
+    z-index: 1; /* Places the content above the background image */
+    /* ... other styles for the content ... */
 }
 
-.content h4 {
-    font-size: 16px;
-    margin: 5px 0;
-    color: #333;
-}
-
-.content p {
-    font-size: 14px;
-    margin: 0;
-    color: #555;
-}
-
-/* Compact grid items for smaller screens */
 .compact-grid-item {
-    font-size: 14px;
-    padding: 10px;
-    margin: 5px;
+    font-size: 14px; // Reduce font size
+    padding: 10px; // Reduce padding
+    margin: 5px; // Reduce margin
+}
+
+.grid-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 /* About page container */
@@ -171,21 +156,30 @@ footer {
 }
 
 /* Responsive layout */
-@media (max-width: 768px) {
-    .grid {
-        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+@media (max-width: 600px) {
+    .container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Minimum width of 150px */
+        gap: 15px; /* Spacing between grid items */
+        padding: 15px; /* Padding around the grid */
     }
-}
 
-@media (max-width: 480px) {
-    .grid {
-        grid-template-columns: repeat(2, 1fr); /* Ensure at least 2 items per row */
+    .container {
+        grid-template-columns: repeat(2, 1fr); /* Ensures 2 items per row */
+    }
+
+    #search-box {
+        width: 95%;
     }
 
     .header-links {
         flex-direction: column;
         gap: 10px;
         align-items: flex-start;
+    }
+
+    .search-container #search-box {
+        width: 95%;
     }
 
     .footer-content {
@@ -210,6 +204,42 @@ footer {
     color: #005f99;
 }
 
+/* Add margin or padding to ensure spacing between grids */
+.category-container {
+    margin-bottom: 30px; /* Adds space between grid categories */
+}
+
+.category-container h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 10px;
+}
+
+/* Google-style Search Container */
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px; /* Adjust height as needed */
+    background-color: #f9f9f9; /* Example background color */
+    padding: 20px;
+}
+
+.search-container #search-box {
+    width: 80%; /* Adjust width as needed */
+    max-width: 600px;
+    padding: 12px;
+    font-size: 18px;
+    border: 1px solid #ddd;
+    border-radius: 24px; /* Google-style rounded corners */
+    box-sizing: border-box;
+}
+
 /* Dark Mode Styles */
 body.dark-mode {
     background-color: #333;
@@ -226,6 +256,16 @@ body.dark-mode .logo {
 }
 
 body.dark-mode .header-links a {
+    color: #eee;
+}
+
+body.dark-mode .search-container {
+    background-color: #292929;
+}
+
+body.dark-mode .search-container #search-box {
+    background-color: #1f1f1f;
+    border-color: #555;
     color: #eee;
 }
 
