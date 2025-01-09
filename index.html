@@ -6,15 +6,25 @@
   <meta name="google-site-verification" content="iDxk7n__yLKWWkm3J4QZelGbn42cUaP04319UvqVUEQ" />
   <meta name="description" content="Get real-time updates on TTC stops. Send a quick message to find out arrival times.">
   <meta name="author" content="Kiran Prasad"> 
-  <meta name="keywords" content="TTC, Toronto Transit Commission, transit, bus, streetcar, subway, stops, real-time, updates, TXTTTC, TTC message, TTC message send, TTC, Toronto Transit, Toronto">
+  <meta name="keywords" content="TTC, Toronto Transit Commission, transit, bus, streetcar, subway, stops, real-time, updates, TXTTTC, TTC message, TTC message send, TTC, Toronto Transit, Toronto, TTC stops, TTC routes, TTC directions, TTC search, TTC SMS, TTC SMS service, TTC SMS message, TTC SMS send, TTC SMS send message, TTC SMS service, TTC SMS service message, TTC SMS service send, TTC SMS service send message, TTC SMS service send message stops, TTC SMS service send message routes, TTC SMS service send message directions, TTC SMS service send message search, TTC SMS service send message SMS, TTC SMS service send message service, TTC SMS service send message TTC, TTC SMS service send message stops, TTC SMS service send message routes, TTC SMS service send message directions, TTC SMS service send message search, TTC SMS service send message SMS, TTC SMS service send message service, TTC SMS service send message TTC">
   <meta name="robots" content="index, follow">
   <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
   <meta name="theme-color" content="#ffffff"> 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preload" href="assets/ttc_streetcar.jpg" as="image">
-  <link rel="preload" href="assets/ttc_bus.jpg" as="image">
-  <link rel="preload" href="assets/ttc_all.jpg" as="image">
+  <link rel="preload" href="assets/ttc_streetcar.webp" as="image">
+  <link rel="preload" href="assets/ttc_bus.webp" as="image">
+  <link rel="preload" href="assets/ttc_all.webp" as="image">
+  <link rel="manifest" href="manifest.json">
 </head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RF4MCV7JG9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RF4MCV7JG9');
+</script>
 <body>
   <header>
     <div class="header-container">
@@ -68,5 +78,14 @@
   </footer>
 
   <script src="script.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(registration => console.log('Service Worker registered:', registration))
+          .catch(error => console.error('Service Worker registration failed:', error));
+      });
+    }
+  </script>
 </body>
 </html>

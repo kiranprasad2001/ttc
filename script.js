@@ -98,10 +98,10 @@ document.addEventListener("DOMContentLoaded", () => {
         stopElement.classList.add("grid-item");
       
         const backgroundImage = {
-          Streetcar: "ttc_streetcar.jpg",
-          Bus: "ttc_bus.jpg",
-          All: "ttc_all.jpg",
-        }[stop.Type?.trim()] || "default.jpg";
+          Streetcar: "ttc_streetcar.webp",
+          Bus: "ttc_bus.webp",
+          All: "ttc_all.webp",
+        }[stop.Type?.trim()] || "images.webp";
       
         const accessibilityIcon =
           stop.Accessibility === "1"
