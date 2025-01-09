@@ -48,6 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Function to calculate distance using the Haversine formula
     function haversineDistance(lat1, lon1, lat2, lon2) {
+        if (isNaN(lat1) || isNaN(lon1) || isNaN(lat2) || isNaN(lon2)) return Infinity; // Handle invalid inputs
         const R = 6371; // Earth's radius in km
         const dLat = deg2rad(lat2 - lat1);
         const dLon = deg2rad(lon2 - lon1);
@@ -65,30 +66,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Get nearby stops based on browser location
     function getNearbyStops(latitude, longitude) {
-        const stopsWithin500m = [];
-        const stopsWithin750m = [];
-        const stopsWithin1km = [];
-
-        stopsData.forEach(stop => {
-            const distance = haversineDistance(latitude, longitude, parseFloat(stop.stop_lat), parseFloat(stop.stop_lon));
-            if (distance <= 500) {
-                stopsWithin500m.push({ ...stop, distance });
-            } else if (distance <= 750) {
-                stopsWithin750m.push({ ...stop, distance });
-            } else if (distance <= 1000) {
-                stopsWithin1km.push({ ...stop, distance });
-            }
-        });
-
-        if (stopsWithin500m.length > 0) {
-            return stopsWithin500m;
-        } else if (stopsWithin750m.length > 0) {
-            return stopsWithin750m;
-        } else if (stopsWithin1km.length > 0) {
-            return stopsWithin1km;
-        } else {
-            return [];
-        }
+        return stopsData
+            .map(stop => ({
+                ...stop,
+                distance: haversineDistance(latitude, longitude, parseFloat(stop.stop_lat), parseFloat(stop.stop_lon))
+            }))
+            .filter(stop => stop.distance <= 1000)
+            .sort((a, b) => a.distance - b.distance);
     }
 
     // Display stops in the grid
@@ -100,8 +84,6 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        stops.sort((a, b) => a.distance - b.distance);
-
         stops.forEach(stop => {
             const stopElement = document.createElement('div');
             stopElement.classList.add('grid-item');
@@ -110,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 Streetcar: "ttc_streetcar.jpg",
                 Bus: "ttc_bus.jpg",
                 All: "ttc_all.jpg",
-            }[stop.Type.trim()] || "default.jpg";
+            }[stop.Type?.trim()] || "default.jpg";
 
             stopElement.innerHTML = `
                 <div class="background-image" style="background-image: url('assets/${backgroundImage}');"></div>
@@ -132,9 +114,9 @@ document.addEventListener('DOMContentLoaded', () => {
     searchBox.addEventListener('input', () => {
         const searchTerm = searchBox.value.toLowerCase();
         const filteredStops = stopsData.filter(stop =>
-            stop.stop_name.toLowerCase().includes(searchTerm) ||
-            stop.Routes.toLowerCase().includes(searchTerm) ||
-            stop.stop_code.toLowerCase().includes(searchTerm)
+            (stop.stop_name?.toLowerCase().includes(searchTerm) || '') ||
+            (stop.Routes?.toLowerCase().includes(searchTerm) || '') ||
+            (stop.Direction?.toLowerCase().includes(searchTerm) || '')
         );
 
         filteredStops.sort((a, b) => {
