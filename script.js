@@ -134,6 +134,25 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Modal functionality
+    const howItWorks = document.getElementById('how-it-works');
+    const modal = document.getElementById('howItWorksModal');
+    const closeModalButton = document.getElementById('closeModal');
+
+    howItWorks.addEventListener('click', () => {
+        modal.style.display = 'block';
+    });
+
+    closeModalButton.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+
+    window.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+
     // Search functionality with distance priority
     searchBox.addEventListener('input', () => {
         const searchTerm = searchBox.value.toLowerCase();
