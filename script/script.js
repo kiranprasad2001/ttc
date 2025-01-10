@@ -12,6 +12,9 @@ document.addEventListener("DOMContentLoaded", () => {
   
         // Get user's location
         if (navigator.geolocation) {
+          const loadingIndicator = document.getElementById('loading-indicator');
+          loadingIndicator.style.display = 'block';
+          
           navigator.geolocation.getCurrentPosition(
             (position) => {
               userLatitude = position.coords.latitude;
@@ -86,10 +89,13 @@ document.addEventListener("DOMContentLoaded", () => {
   
     // Display stops
     function displayStops(stops) {
+      const loadingIndicator = document.getElementById('loading-indicator');
+      loadingIndicator.style.display = 'none';
+      
       gridContainer.innerHTML = ""; // Clear previous results
   
       if (stops.length === 0) {
-        gridContainer.innerHTML = "<p>No stops found within 500m.</p>";
+        gridContainer.innerHTML = "<p>No stops found within 500m or location access isn't enabled.</p>";
         return;
       }
   
