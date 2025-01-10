@@ -353,16 +353,3 @@ body.dark-mode .footer-content a:hover {
     text-decoration: none;
     cursor: pointer;
 }
-
-#loading-indicator {
-    display: none; /* Initially hidden */
-    position: fixed; /* Stay in the center of the screen */
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 2; /* Ensure it's on top */
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-}
