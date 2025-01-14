@@ -353,3 +353,15 @@ body.dark-mode .footer-content a:hover {
     text-decoration: none;
     cursor: pointer;
 }
+
+.icon-container {
+    display: flex;
+    gap: 8px; /* Space between icons */
+    margin-bottom: 8px; /* Space between icons and text content */
+    align-items: center; /* Vertically align icons */
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+}

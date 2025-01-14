@@ -145,6 +145,10 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="background-image" style="background-image: url('assets/${backgroundImage}');"></div>
             <div class="accessibility-icon" style="position: absolute; top: 1px; left: 1px; z-index: 2; background-color: white; padding: 1px; border-radius: 1px;">${accessibilityIcon}</div>
             <div class="typeIcons" style="position: absolute; top: 1px; left: 1px; z-index: 2; background-color: white; padding: 1px; border-radius: 1px;">${typeIcons}</div>
+            <div class="icon-container">
+              ${accessibilityIcon}
+              ${typeIcons}
+            </div>
             <div class="content">
                 <h4>${stop.stop_name}</h4>
                 <p>${stop.Routes} - ${distanceString}</p>
