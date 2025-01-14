@@ -6821,7 +6821,7 @@ stop_id,stop_code,stop_name,stop_lat,stop_lon,Routes,Direction,Accessibility,Typ
 5967,6835,Queen St West at Dunn Ave,43.640919,-79.434664,301 | 501,Eastbound,1,Streetcar
 5968,9279,Antibes Dr (North) at Plum Treeway (South) North Side,43.781845,-79.446507,125,Northbound,1,Bus
 5969,3642,Glencairn Ave at Caledonia Rd East Side,43.704671,-79.464333,14,Eastbound,1,Bus
-5970,6850,Queen St West at Shaw St,43.64456,-79.416511,301 | 501 | 63,Eastbound,1,all
+5970,6850,Queen St West at Shaw St,43.64456,-79.416511,301 | 501 | 63,Eastbound,1,All
 5971,12054,Progress Ave at Sheppard Ave East,43.794411,-79.234769,134B | 134D,Northbound,1,Bus
 5972,7594,CARNFORTH DR AT LAWRENCE AVE EAST,43.74095,-79.314144,91C | 91D,Northbound,1,Bus
 5973,5413,Lawrence Ave West at Weston Rd  West Side,43.700019,-79.517036,352 | 52A | 52B | 52D | 52F | 52G | 79A | 79B | 952,Westbound,1,Bus
@@ -6836,7 +6836,7 @@ stop_id,stop_code,stop_name,stop_lat,stop_lon,Routes,Direction,Accessibility,Typ
 5982,3913,Jane St at Page Ave,43.663971,-79.490342,335 | 35A | 35B | 55,Northbound,1,Bus
 5983,9168,Leslie St at Thorny Vineway,43.787707,-79.367312,51,Northbound,1,Bus
 5984,5963,Ossington Ave at Dundas St West North Side,43.649724,-79.420791,363 | 63A | 63B,Northbound,1,Bus
-5985,5202,Lake Shore Blvd West at Superior Ave,43.615108,-79.48869,301 | 501 | 508 | 80 | 80S,Southwestbound,1,all
+5985,5202,Lake Shore Blvd West at Superior Ave,43.615108,-79.48869,301 | 501 | 508 | 80 | 80S,Southwestbound,1,All
 5987,7706,Ellesmere Rd at Oakley Blvd East Side,43.768395,-79.268369,395 | 95A | 95B,Eastbound,1,Bus
 5988,1017,Dupont St at Manning Ave East Side,43.672099,-79.418732,26,Eastbound,1,Bus
 5989,6265,Brian Ave at Margaret Ave,43.78653,-79.334248,10 | 169A,Northbound,1,Bus
@@ -7309,7 +7309,7 @@ stop_id,stop_code,stop_name,stop_lat,stop_lon,Routes,Direction,Accessibility,Typ
 7090,1022,Dupont St at Palmerston Ave,43.672509,-79.416844,26,Eastbound,1,Bus
 7091,11564,Dynamic Dr at Turbina Ave,43.826754,-79.251966,42A,Southbound,1,Bus
 7092,3031,Queen St East at Boulton Ave,43.65966,-79.346553,301 | 501 | 503,Westbound,1,Streetcar
-7093,3029,Queen St East at Alton Ave,43.66388,-79.327688,301 | 31 | 501 | 503,Westbound,1,all
+7093,3029,Queen St East at Alton Ave,43.66388,-79.327688,301 | 31 | 501 | 503,Westbound,1,All
 7094,7039,Royal York Rd at Weston Wood Rd,43.69197,-79.531007,73,Southbound,1,Bus
 7095,3193,Wilson Heights Blvd at Waterloo Ave South Side,43.755093,-79.459835,104,Southbound,1,Bus
 7096,1955,Don Mills Rd at Moatfield Dr,43.758464,-79.346899,25A | 25B | 325,Northbound,1,Bus
@@ -7357,7 +7357,7 @@ stop_id,stop_code,stop_name,stop_lat,stop_lon,Routes,Direction,Accessibility,Typ
 7143,679,Burnhamthorpe Rd at Kipling Ave,43.650862,-79.539519,50,Direction Not Found,2,Bus
 7144,7477,Yorkland Blvd (North) at Yorkland Rd,43.773014,-79.335988,167A | 24B,Westbound,1,Bus
 7145,11927,Promenade Cir at East Promenade North Side (Mall East Ent),43.807581,-79.45017,160,Northbound,2,Bus
-7147,1769,Broadview Ave at Wolfrey Ave,43.674457,-79.357342,304 | 504 | 505 | 508 | 62 | 8,Southbound,2,all
+7147,1769,Broadview Ave at Wolfrey Ave,43.674457,-79.357342,304 | 504 | 505 | 508 | 62 | 8,Southbound,2,All
 7148,3032,Queen St East at Broadview Ave,43.658746,-79.35006,301 | 304 | 501 | 503 | 504 | 508,Eastbound,1,Streetcar
 7149,7202,Sheppard Ave East at Lapsley Rd East Side,43.796173,-79.226955,385 | 85A | 85B | 85C | 985B,Eastbound,1,Bus
 7150,8434,Victoria Park Ave at Bassett Ave,43.713701,-79.297915,24A | 24B | 324,Northbound,1,Bus
@@ -7572,7 +7572,7 @@ stop_id,stop_code,stop_name,stop_lat,stop_lon,Routes,Direction,Accessibility,Typ
 7384,5695,Midland Ave at Dorcot Ave,43.758095,-79.267625,57,Southbound,1,Bus
 7385,9742,Barber Greene Rd at Southill Dr West Side,43.728757,-79.346279,162 | 162S,Northwestbound,1,Bus
 7387,3785,Islington Ave at Elmhurst Dr,43.723031,-79.558639,337 | 37B | 937,Northbound,1,Bus
-7388,1761,Broadview Ave at Millbrook Cres,43.671897,-79.354733,304 | 504 | 505 | 508 | 62 | 8,Northbound,2,all
+7388,1761,Broadview Ave at Millbrook Cres,43.671897,-79.354733,304 | 504 | 505 | 508 | 62 | 8,Northbound,2,All
 7389,5481,Leslie St at Talwood Dr (North),43.74077,-79.357205,51,Northbound,2,Bus
 7390,9721,Dundas St West at Highway 427,43.629242,-79.554797,112B | 112C | 123F,Westbound,1,Bus
 7391,5689,Midland Ave at Broadbent Ave,43.738431,-79.259648,57,Northbound,1,Bus
@@ -7858,7 +7858,7 @@ stop_id,stop_code,stop_name,stop_lat,stop_lon,Routes,Direction,Accessibility,Typ
 8281,4487,40 Milvan Dr,43.753568,-79.554849,36D | 36F,Southeastbound,1,Bus
 8282,6616,Opposite 130 Neptune Dr East Side,43.729902,-79.440744,109B | 109C,Eastbound,1,Bus
 8283,147,Bathurst St at Greenwin Village Rd,43.790692,-79.445237,160 | 307,Direction Not Found,1,Bus
-8284,5187,Lake Shore Blvd West at Long Branch Ave,43.594303,-79.53413,110B | 301 | 501 | 508,Eastbound,1,all
+8284,5187,Lake Shore Blvd West at Long Branch Ave,43.594303,-79.53413,110B | 301 | 501 | 508,Eastbound,1,All
 8286,2402,Eglinton Ave West at Royal York Rd,43.682131,-79.526845,32 | 32S | 332,Eastbound,1,Bus
 8288,7902,Keele St at West Toronto St,43.670163,-79.466669,341 | 41 | 89,Southbound,1,Bus
 8289,13661,Markham Rd at Highway 7,43.874233,-79.260028,102,Southbound,1,Bus
@@ -7976,7 +7976,7 @@ stop_id,stop_code,stop_name,stop_lat,stop_lon,Routes,Direction,Accessibility,Typ
 8418,3848,Islington Ave at Thorold Gate North Side,43.762953,-79.573647,337 | 37B | 937,Northbound,1,Bus
 8419,1437,Oriole Pkwy at Gormley Ave,43.693645,-79.401714,13,Northbound,1,Bus
 8420,132,Bathurst St at Elderwood Dr,43.695157,-79.423089,307 | 7,Direction Not Found,1,Bus
-8421,1759,Broadview Ave at Langley Ave-Bridgepoint Health Ctr,43.667664,-79.353308,304 | 504 | 505 | 508 | 62 | 8,Northbound,2,all
+8421,1759,Broadview Ave at Langley Ave-Bridgepoint Health Ctr,43.667664,-79.353308,304 | 504 | 505 | 508 | 62 | 8,Northbound,2,All
 8423,12,Anglesey Blvd at The Kingsway,43.663796,-79.521797,48,Direction Not Found,1,Bus
 8424,8029,Parkwoods Village Dr at Gisburn Rd,43.760085,-79.321793,395 | 95,Northwestbound,1,Bus
 8425,14123,Sheppard Ave East at Ecopark Gate,43.805823,-79.183075,385 | 85 | 985,Westbound,1,Bus
@@ -8416,7 +8416,7 @@ stop_id,stop_code,stop_name,stop_lat,stop_lon,Routes,Direction,Accessibility,Typ
 9510,1718,Bayview Ave at Dawlish Ave South Side,43.7243,-79.379746,11 | 124 | 352,Southbound,1,Bus
 9512,716,Caledonia Rd at Eglinton Ave West,43.693187,-79.462241,47B | 47C,Direction Not Found,1,Bus
 9514,5267,Lawrence Ave East at Galloway Rd,43.766302,-79.196286,354 | 54 | 954,Westbound,1,Bus
-9516,2032,Dufferin Gate Loop,43.634401,-79.425872,29 | 29A | 329 | 329S | 504 | 929,bound,1,all
+9516,2032,Dufferin Gate Loop,43.634401,-79.425872,29 | 29A | 329 | 329S | 504 | 929,bound,1,All
 9517,6401,Glen Rd at Elm Ave,43.676149,-79.37519,75 | 75S,Southbound,2,Bus
 9518,3341,Opposite 60 Belfield Rd East Side,43.703369,-79.56919,45,Eastbound,1,Bus
 9519,9249,Thirtieth St at Akron Rd,43.600383,-79.532085,110B,Southbound,1,Bus
@@ -8430,7 +8430,7 @@ stop_id,stop_code,stop_name,stop_lat,stop_lon,Routes,Direction,Accessibility,Typ
 9527,11795,715 Milner Ave,43.796035,-79.210028,132,Eastbound,1,Bus
 9528,4837,Brimley Rd at Wenlock Gate,43.821165,-79.284157,21C,Northbound,1,Bus
 9529,6731,Opposite 3200 Pharmacy Ave at Walkway to Deerbrook Trail,43.800107,-79.328794,167A | 167B,Northbound,1,Bus
-9530,2072,Dufferin St at Liberty St,43.637414,-79.426893,29A | 29C | 329 | 504 | 929,Southbound,1,all
+9530,2072,Dufferin St at Liberty St,43.637414,-79.426893,29A | 29C | 329 | 504 | 929,Southbound,1,All
 9531,80,Bathurst St at Alcina Ave,43.680169,-79.417216,307 | 7,Direction Not Found,1,Bus
 9532,4284,Kipling Ave at Beaverbrook Ave,43.662466,-79.544522,45,Southbound,2,Bus
 9533,8281,Steeles Ave West at Irondale Dr,43.769499,-79.549749,60 | 960,Eastbound,1,Bus
@@ -9108,7 +9108,7 @@ stop_id,stop_code,stop_name,stop_lat,stop_lon,Routes,Direction,Accessibility,Typ
 17664,15350,Kingston Rd at Woodbine Ave,43.674156,-79.307787,322 | 322S | 503,Southwestbound,1,Streetcar
 17668,15353,King St West at Joe Shuster Way,43.639591,-79.423721,304 | 504 | 508,Eastbound,2,Streetcar
 17671,15356,Dundas St West at Shaw St,43.649911,-79.418123,505,Westbound,2,Streetcar
-18210,15699,Queen St East at Alton Ave,43.663648,-79.328109,301 | 31 | 501 | 503,Eastbound,2,all
+18210,15699,Queen St East at Alton Ave,43.663648,-79.328109,301 | 31 | 501 | 503,Eastbound,2,All
 18214,15702,Eglinton Ave East at Dunfield Ave,43.707208,-79.395605,334 | 334S | 34A | 34C | 354 | 51 | 54A | 54B | 56,Eastbound,1,Bus
 18217,15704,Eglinton Ave East at Don Avon Dr,43.713918,-79.362496,334 | 334S | 34A | 34C | 354 | 51 | 54A | 54B,Eastbound,1,Bus
 18220,15708,Opposite 2190 Yonge St,43.705297,-79.397908,320 | 320A | 320S | 32A | 32C | 332 | 334 | 334S | 354 | 52A | 52B | 52D | 97A | 97B,Northbound,1,Bus
