@@ -145,7 +145,7 @@ document.addEventListener("DOMContentLoaded", () => {
         stopElement.innerHTML = `
             <div class="accessibility-icon" style="position: absolute; top: 1px; left: 1px; z-index: 2; background-color: white; padding: 1px; border-radius: 1px;">${accessibilityIcon}</div>
             <div class="busIcons" style="position: absolute; top: 1px; left: 20px; z-index: 2; background-color: white; padding: 1px; border-radius: 1px;">${busIcons}</div>
-            <div class="streetcarIcons" style="position: absolute; top: 1px; left: 40px; z-index: 2; background-color: white; padding: 1px; border-radius: 1px;">${streetcarIcons}</div>
+            <div class="streetcarIcons" style="position: absolute; top: 1px; left: 30px; z-index: 2; background-color: white; padding: 1px; border-radius: 1px;">${streetcarIcons}</div>
             <div class="content">
                 <h4>${stop.stop_name}</h4>
                 <p>${stop.Routes} - ${distanceString}</p>
