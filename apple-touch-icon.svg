@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" width="180" height="180">
+  <rect width="180" height="180" rx="40" fill="#297081"/>
+  <text x="38" y="128" font-family="IBM Plex Mono, ui-monospace, monospace" font-weight="700" font-size="118" fill="#F5F5F4">k</text>
+  <circle cx="130" cy="122" r="11" fill="#E29D35"/>
+</svg>

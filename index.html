@@ -1,21 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>TTC Message Sender</title>
+  <title>TTC Message Sender · kiranic</title>
+  <link rel="stylesheet" href="kiranic-tokens.css">
   <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="favicon/favicon.ico" type="image/x-icon"> 
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" href="favicon/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="apple-touch-icon.svg">
   <meta name="google-site-verification" content="iDxk7n__yLKWWkm3J4QZelGbn42cUaP04319UvqVUEQ" />
   <meta name="description" content="Get real-time updates on TTC stops. Send a quick message to find out arrival times.">
-  <meta name="author" content="Kiran Prasad"> 
-  <meta name="keywords" content="TTC, Toronto Transit Commission, transit, bus, streetcar, subway, stops, real-time, updates, TXTTTC, TTC message, TTC message send, TTC, Toronto Transit, Toronto, TTC stops, TTC routes, TTC directions, TTC search, TTC SMS, TTC SMS service, TTC SMS message, TTC SMS send, TTC SMS send message, TTC SMS service, TTC SMS service message, TTC SMS service send, TTC SMS service send message, TTC SMS service send message stops, TTC SMS service send message routes, TTC SMS service send message directions, TTC SMS service send message search, TTC SMS service send message SMS, TTC SMS service send message service, TTC SMS service send message TTC, TTC SMS service send message stops, TTC SMS service send message routes, TTC SMS service send message directions, TTC SMS service send message search, TTC SMS service send message SMS, TTC SMS service send message service, TTC SMS service send message TTC">
+  <meta name="author" content="Kiran Prasad">
+  <meta name="keywords" content="TTC, Toronto Transit Commission, transit, bus, streetcar, subway, stops, real-time, TTC SMS, kiranic">
   <meta name="robots" content="index, follow">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
-  <meta name="theme-color" content="#ffffff"> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme-color" content="#297081">
+  <meta property="og:site_name" content="Kiranic">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preload" href="assets/ttc_streetcar.webp" as="image">
   <link rel="preload" href="assets/ttc_bus.webp" as="image">
   <link rel="preload" href="assets/ttc_all.webp" as="image">
   <link rel="manifest" href="manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap">
 </head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-RF4MCV7JG9"></script>
@@ -26,18 +33,21 @@
 
   gtag('config', 'G-RF4MCV7JG9');
 </script>
-<body>
+<body class="kc-base">
   <header>
     <div class="header-container">
-      <div>
-        <a href="index.html" class="logo-link">
-          <img src="assets/icon-96x96.png" alt= "Spotrot Logo" class="logo-image"> 
-        </a>
-      </div>
-      <div class="header-links">
-        <a href="https://github.com/kiranprasad2001/ttc" target="_blank">Contribute</a>
+      <a href="index.html" class="logo-link" aria-label="TTC Message Sender — kiranic">
+        <img src="favicon.svg" alt="" class="logo-image" width="28" height="28">
+        <span class="logo-text">
+          <span class="logo-product">ttc sms</span>
+          <span class="logo-net">· kiranic</span>
+        </span>
+      </a>
+      <nav class="header-links" aria-label="Main">
+        <a href="https://github.com/kiranprasad2001/ttc" target="_blank" rel="noopener">Contribute</a>
         <a href="about.html">About</a>
-      </div>
+        <a href="https://kiranic.com" target="_blank" rel="noopener">kiranic.com</a>
+      </nav>
     </div>
   </header>
 
@@ -67,16 +77,17 @@
   <footer>
     <div class="footer-content">
       <div class="left">
-        &copy; KP (<a href="https://links.spotrot.com">links.spotrot.com</a>)
+        &copy; <span id="kc-year"></span> <a href="https://kiranic.com">Kiran Prasad</a>
       </div>
       <div class="center">
         Not an official app. Official website: <a href="https://ttc.ca">ttc.ca</a>
       </div>
       <div class="right">
-        Official news: <a href="https://ttc.ca/news">ttc.ca/news</a>
+        Part of the <a href="https://kiranic.com">kiranic</a> network
       </div>
     </div>
   </footer>
+  <script>document.getElementById('kc-year').textContent = new Date().getFullYear();</script>
 
   <script src="script/script.js"></script>
   <script>

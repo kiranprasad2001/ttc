@@ -1,10 +1,14 @@
-/* Basic styles */
+/* ttc — styled with kiranic-brand tokens.
+   Tokens come from kiranic-tokens.css (vendored from kiranic-brand repo). */
+
 body {
-    font-family: sans-serif;
     margin: 0;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    font-family: var(--kc-font-sans);
+    background: var(--kc-surface-0);
+    color: var(--kc-text);
 }
 
 .content-wrapper {
@@ -13,61 +17,145 @@ body {
     flex-direction: column;
 }
 
+/* ─── Header ─── */
 header {
-    background-color: #f0f0f0;
-    padding: 10px 20px;
-    border-bottom: 1px solid #ccc;
+    background: var(--kc-surface-2);
+    border-bottom: 1px solid var(--kc-border);
 }
 
 .header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #f0f0f0;
-    padding: 10px 20px;
-    color: white;
-}
-
-.logo-image {
-    height: 20px;
-    width: auto; /* Maintain aspect ratio */
+    max-width: 64rem;
+    margin: 0 auto;
+    padding: 0.6rem 1.25rem;
+    color: var(--kc-text);
 }
 
 .logo-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
     text-decoration: none;
     color: inherit;
 }
 
+.logo-image {
+    height: 28px;
+    width: 28px;
+    display: block;
+}
+
+.logo-text {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.4rem;
+    font-family: var(--kc-font-mono);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+.logo-product { color: var(--kc-text); }
+.logo-net { color: var(--kc-text-muted); font-weight: 500; font-size: 0.9em; }
+
 .header-links {
     display: flex;
-    gap: 15px;
+    gap: 1.25rem;
+    align-items: center;
 }
 
 .header-links a {
     text-decoration: none;
-    color: #333;
-    font-family: sans-serif;
+    color: var(--kc-text-muted);
+    font-family: var(--kc-font-sans);
+    font-size: 0.9rem;
+    transition: color 0.15s ease;
+}
+.header-links a:hover { color: var(--kc-teal); }
+
+/* ─── Search ─── */
+.search-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 160px;
+    background: var(--kc-surface-1);
+    border-bottom: 1px solid var(--kc-border);
+    padding: 20px;
 }
 
-/* Make sure the grids have proper structure */
+.search-container #search-box {
+    width: 80%;
+    max-width: 600px;
+    padding: 12px 18px;
+    font-size: 18px;
+    font-family: var(--kc-font-sans);
+    background: var(--kc-surface-0);
+    color: var(--kc-text);
+    border: 1px solid var(--kc-border);
+    border-radius: var(--kc-radius-lg);
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    outline: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.search-container #search-box::placeholder { color: var(--kc-text-dim); }
+.search-container #search-box:focus {
+    border-color: var(--kc-teal);
+    box-shadow: var(--kc-focus);
+}
+
+.how-it-works {
+    display: inline-block;
+    background: transparent;
+    color: var(--kc-teal);
+    padding: 6px 12px;
+    border: 1px solid var(--kc-border);
+    border-radius: var(--kc-radius);
+    margin-top: 10px;
+    cursor: pointer;
+    font-family: var(--kc-font-sans);
+    font-size: 0.875rem;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+.how-it-works:hover {
+    background: var(--kc-teal);
+    color: #fff;
+}
+
+/* ─── Grid ─── */
 .container {
     display: flex;
     flex-direction: column;
+    padding: 16px;
+    max-width: 64rem;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 12px;
 }
 
 .grid-item {
-    position: relative; /* To position the background image */
-    border: 1px solid #ccc;
+    position: relative;
+    border: 1px solid var(--kc-border);
+    background: var(--kc-surface-1);
     padding: 15px;
     text-align: center;
     cursor: pointer;
-    border-radius: 10px;
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
-    display: flex; /* Make grid-item a flex container */
-    align-items: center; /* Vertically align items */
+    border-radius: var(--kc-radius);
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    align-items: center;
+    color: var(--kc-text);
 }
 
-.grid-item svg { /* Target the SVG directly */
+.grid-item svg {
     position: absolute;
     top: 10px;
     left: 10px;
@@ -75,293 +163,136 @@ header {
     height: 24px;
 }
 
+.grid-item:hover {
+    transform: translateY(-3px);
+    border-color: var(--kc-teal);
+    box-shadow: 0 6px 18px rgba(41, 112, 129, 0.12);
+}
+
 .background-image {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     background-size: cover;
     background-repeat: no-repeat;
-    z-index: -1; /* Places the background image behind the content */
-    opacity: 0.2
+    z-index: -1;
+    opacity: 0.18;
 }
 
-.content {
-    position: relative; /* Ensures content is positioned relative to the grid item */
-    z-index: 1; /* Places the content above the background image */
-    /* ... other styles for the content ... */
-}
+.content { position: relative; z-index: 1; }
 
 .compact-grid-item {
-    font-size: 14px; // Reduce font size
-    padding: 10px; // Reduce padding
-    margin: 5px; // Reduce margin
+    font-size: 14px;
+    padding: 10px;
+    margin: 5px;
 }
 
-.grid-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
+.category-container { margin-bottom: 30px; }
+.category-container h2 { font-size: 1.5em; margin-bottom: 10px; font-family: var(--kc-font-mono); font-weight: 600; }
 
-/* About page container */
+/* ─── About page ─── */
 .about-container {
-    padding: 20px;
+    padding: 24px;
     max-width: 800px;
     margin: 0 auto;
 }
-
 .about-container h2 {
     margin-top: 20px;
     font-size: 24px;
-    color: #333;
+    font-family: var(--kc-font-mono);
+    font-weight: 600;
+    color: var(--kc-text);
 }
+.about-container ul { list-style-type: disc; margin: 10px 0 20px 20px; }
+.about-container p { line-height: 1.6; color: var(--kc-text-muted); }
+.about-container a { color: var(--kc-teal); text-decoration: none; }
+.about-container a:hover { text-decoration: underline; }
 
-.about-container ul {
-    list-style-type: disc;
-    margin: 10px 0 20px 20px;
-}
-
-.about-container p {
-    line-height: 1.6;
-    color: #555;
-}
-
-.about-container a {
-    color: #007acc;
-    text-decoration: none;
-}
-
-.about-container a:hover {
-    text-decoration: underline;
-}
-
-/* Footer styles */
+/* ─── Footer ─── */
 footer {
-    background-color: #f0f0f0;
-    padding: 10px 20px;
-    border-top: 1px solid #ccc;
+    background: var(--kc-surface-2);
+    border-top: 1px solid var(--kc-border);
+    padding: 14px 20px;
+    font-size: 0.875rem;
+    color: var(--kc-text-muted);
 }
 
 .footer-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 64rem;
+    margin: 0 auto;
+    gap: 1rem;
 }
 
-.left, .center, .right {
-    flex: 1;
-}
+.left, .center, .right { flex: 1; }
+.left { text-align: left; }
+.center { text-align: center; }
+.right { text-align: right; }
 
-.left {
-    text-align: left;
-}
-
-.center {
-    text-align: center;
-}
-
-.right {
-    text-align: right;
-}
-
-/* Responsive layout */
-@media (max-width: 600px) {
-    .container {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Minimum width of 150px */
-        gap: 15px; /* Spacing between grid items */
-        padding: 15px; /* Padding around the grid */
-    }
-
-    .logo-image {
-        height: 50px; /* Reduces the height for smaller screens */
-    }
-    
-    .container {
-        grid-template-columns: repeat(2, 1fr); /* Ensures 2 items per row */
-    }
-
-    #search-box {
-        width: 95%;
-    }
-
-    .header-links {
-        flex-direction: column;
-        gap: 10px;
-        align-items: flex-start;
-    }
-
-    .search-container #search-box {
-        width: 95%;
-    }
-
-    .footer-content {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .left, .center, .right {
-        text-align: center;
-        flex: none;
-    }
-}
-
-/* Hover Effects for Footer Links */
 .footer-content a {
     text-decoration: none;
-    color: #007acc;
-    transition: color 0.3s ease;
+    color: var(--kc-teal);
+    transition: color 0.15s ease;
 }
+.footer-content a:hover { color: var(--kc-teal-light); text-decoration: underline; }
 
-.footer-content a:hover {
-    color: #005f99;
-}
-
-/* Add margin or padding to ensure spacing between grids */
-.category-container {
-    margin-bottom: 30px; /* Adds space between grid categories */
-}
-
-.category-container h2 {
-    font-size: 1.5em;
-    margin-bottom: 10px;
-}
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 10px;
-}
-
-/* Google-style Search Container */
-.search-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 150px; /* Adjust height as needed */
-    background-color: #f9f9f9; /* Example background color */
-    padding: 20px;
-}
-
-.search-container #search-box {
-    width: 80%; /* Adjust width as needed */
-    max-width: 600px;
-    padding: 12px;
-    font-size: 18px;
-    border: 1px solid #ddd;
-    border-radius: 24px; /* Google-style rounded corners */
-    box-sizing: border-box;
-    margin-bottom: 10px; /* Add space between search box and link */
-}
-
-/* Dark Mode Styles */
-body.dark-mode {
-    background-color: #333;
-    color: #eee;
-}
-
-body.dark-mode header {
-    background-color: #222;
-    border-bottom-color: #555;
-}
-
-body.dark-mode .logo {
-    color: #eee;
-}
-
-body.dark-mode .header-links a {
-    color: #eee;
-}
-
-body.dark-mode .search-container {
-    background-color: #292929;
-}
-
-body.dark-mode .search-container #search-box {
-    background-color: #1f1f1f;
-    border-color: #555;
-    color: #eee;
-}
-
-body.dark-mode .grid-item {
-    background-color: #444;
-    color: #eee;
-    border-color: #555;
-}
-
-body.dark-mode .grid-item:hover {
-    background-color: #555;
-}
-
-body.dark-mode footer {
-    background-color: #222;
-    border-top-color: #555;
-}
-
-body.dark-mode .footer-content a {
-    color: #eee;
-}
-
-body.dark-mode .footer-content a:hover {
-    color: #fff;
-}
-
-.how-it-works {
-    display: inline-block;
-    background-color: #eee; /* Example background color */
-    color: #333;
-    padding: 8px 12px;
-    border-radius: 5px;
-    margin-top: 10px; /* Adjust as needed */
-    cursor: pointer;
-}
-
+/* ─── Modal ─── */
 .modal {
     display: none;
     position: fixed;
+    inset: 0;
     z-index: 10;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.55);
 }
-
 .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 500px;
+    background: var(--kc-surface-1);
+    color: var(--kc-text);
+    margin: 10% auto;
+    padding: 24px;
+    border: 1px solid var(--kc-border);
+    border-radius: var(--kc-radius-lg);
+    width: 85%;
+    max-width: 520px;
+    font-family: var(--kc-font-sans);
 }
-
 .close-button {
-    color: #aaa;
+    color: var(--kc-text-dim);
     float: right;
     font-size: 28px;
     font-weight: bold;
     cursor: pointer;
+    transition: color 0.15s ease;
 }
-
-.close-button:hover,
-.close-button:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
+.close-button:hover { color: var(--kc-text); }
 
 .icon-container {
     display: flex;
-    gap: 8px; /* Space between icons */
-    margin-bottom: 8px; /* Space between icons and text content */
-    align-items: center; /* Vertically align icons */
+    gap: 8px;
+    margin-bottom: 8px;
+    align-items: center;
 }
+.icon { width: 20px; height: 20px; }
 
-.icon {
-    width: 20px;
-    height: 20px;
+/* ─── Responsive ─── */
+@media (max-width: 600px) {
+    .container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        padding: 12px;
+    }
+    .logo-image { height: 32px; width: 32px; }
+    #search-box { width: 95%; }
+    .search-container #search-box { width: 95%; }
+    .header-links {
+        flex-direction: row;
+        gap: 10px;
+    }
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .left, .center, .right { text-align: center; flex: none; }
 }
